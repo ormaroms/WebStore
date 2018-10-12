@@ -1,0 +1,9 @@
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\bin\Debug\WebStoreData.dacpac
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\bin\Debug\WebStoreData.dll
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\bin\Debug\WebStoreData.pdb
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\Model.xml
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\refactor.xml
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\postdeploy.sql
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\predeploy.sql
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\WebStoreData.dll
+C:\Users\orrma\Desktop\Clone\WebStore\WebStoreData\obj\Debug\WebStoreData.pdb
