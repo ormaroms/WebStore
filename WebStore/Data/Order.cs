@@ -24,7 +24,7 @@ namespace WebStore.Data
     
         public virtual Sho Sho { get; set; }
         public virtual Shirt Shirt { get; set; }
-        public virtual Trouser Trouser { get; set; }
+        public virtual Pant Pant { get; set; }
         public virtual PickUpPoint PickUpPoint { get; set; }
         public virtual User User { get; set; }
     }

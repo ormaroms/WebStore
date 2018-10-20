@@ -201,6 +201,9 @@
     <Compile Include="Data\Order.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Pant.cs">
+      <DependentUpon>WebStoreEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\PickUpPoint.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
@@ -208,9 +211,6 @@
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Sho.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Trouser.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\User.cs">
@@ -238,23 +238,19 @@
     <Compile Include="Models\PickUpPoint.cs" />
     <Compile Include="Models\Shirt.cs" />
     <Compile Include="Models\Shoes.cs" />
-    <Compile Include="Models\Trousers.cs" />
+    <Compile Include="Models\Pants.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WebStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\LocalDB.mdf" />
-    <Content Include="App_Data\LocalDB_log.ldf">
-      <DependentUpon>LocalDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Data\WebStoreEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WebStoreEF.Context.cs</LastGenOutput>
       <DependentUpon>WebStoreEF.edmx</DependentUpon>
+      <LastGenOutput>WebStoreEF.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Data\WebStoreEF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -347,7 +343,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

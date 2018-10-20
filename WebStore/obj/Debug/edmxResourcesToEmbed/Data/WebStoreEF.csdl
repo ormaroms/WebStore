@@ -3,6 +3,8 @@
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ItemID" />
+      <PropertyRef Name="Size" />
     </Key>
     <Property Name="OrderID" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
@@ -11,11 +13,26 @@
     <Property Name="PickUpPointID" Type="Int32" Nullable="false" />
     <Property Name="Size" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Sho" Relationship="Self.FK__Orders__ItemID__34C8D9D1" FromRole="Orders" ToRole="Shoes" />
-    <NavigationProperty Name="Shirt" Relationship="Self.FK__Orders__ItemID__37A5467C" FromRole="Orders" ToRole="Shirts" />
-    <NavigationProperty Name="Trouser" Relationship="Self.FK__Orders__ItemID__38996AB5" FromRole="Orders" ToRole="Trousers" />
-    <NavigationProperty Name="PickUpPoint" Relationship="Self.FK__Orders__PickUpPo__35BCFE0A" FromRole="Orders" ToRole="PickUpPoints" />
-    <NavigationProperty Name="User" Relationship="Self.FK__Orders__UserID__36B12243" FromRole="Orders" ToRole="Users" />
+    <NavigationProperty Name="Sho" Relationship="Self.FK__Orders__5DCAEF64" FromRole="Orders" ToRole="Shoes" />
+    <NavigationProperty Name="Shirt" Relationship="Self.FK__Orders__60A75C0F" FromRole="Orders" ToRole="Shirts" />
+    <NavigationProperty Name="Pant" Relationship="Self.FK__Orders__619B8048" FromRole="Orders" ToRole="Pants" />
+    <NavigationProperty Name="PickUpPoint" Relationship="Self.FK__Orders__PickUpPo__5EBF139D" FromRole="Orders" ToRole="PickUpPoints" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Orders__UserID__5FB337D6" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Pant">
+    <Key>
+      <PropertyRef Name="ItemID" />
+      <PropertyRef Name="Size" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Size" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__619B8048" FromRole="Pants" ToRole="Orders" />
   </EntityType>
   <EntityType Name="PickUpPoint">
     <Key>
@@ -25,46 +42,37 @@
     <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="LcationLongitude_" Type="Double" Nullable="false" />
     <Property Name="LcationLatitude_" Type="Double" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__PickUpPo__35BCFE0A" FromRole="PickUpPoints" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__PickUpPo__5EBF139D" FromRole="PickUpPoints" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Shirt">
     <Key>
       <PropertyRef Name="ItemID" />
+      <PropertyRef Name="Size" />
     </Key>
     <Property Name="ItemID" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Size" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__37A5467C" FromRole="Shirts" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__60A75C0F" FromRole="Shirts" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Sho">
     <Key>
       <PropertyRef Name="ItemID" />
+      <PropertyRef Name="Size" />
     </Key>
     <Property Name="ItemID" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Size" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__34C8D9D1" FromRole="Shoes" ToRole="Orders" />
-  </EntityType>
-  <EntityType Name="Trouser">
-    <Key>
-      <PropertyRef Name="ItemID" />
-    </Key>
-    <Property Name="ItemID" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Size" Type="Int32" Nullable="false" />
-    <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__38996AB5" FromRole="Trousers" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__5DCAEF64" FromRole="Shoes" ToRole="Orders" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -74,45 +82,51 @@
     <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Passwod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="isAdmin" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__36B12243" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__5FB337D6" FromRole="Users" ToRole="Orders" />
   </EntityType>
-  <Association Name="FK__Orders__ItemID__34C8D9D1">
+  <Association Name="FK__Orders__5DCAEF64">
     <End Role="Shoes" Type="Self.Sho" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Shoes">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__ItemID__37A5467C">
+  <Association Name="FK__Orders__60A75C0F">
     <End Role="Shirts" Type="Self.Shirt" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Shirts">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__ItemID__38996AB5">
-    <End Role="Trousers" Type="Self.Trouser" Multiplicity="1" />
+  <Association Name="FK__Orders__619B8048">
+    <End Role="Pants" Type="Self.Pant" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Trousers">
+      <Principal Role="Pants">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="ItemID" />
+        <PropertyRef Name="Size" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__PickUpPo__35BCFE0A">
+  <Association Name="FK__Orders__PickUpPo__5EBF139D">
     <End Role="PickUpPoints" Type="Self.PickUpPoint" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -124,7 +138,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__UserID__36B12243">
+  <Association Name="FK__Orders__UserID__5FB337D6">
     <End Role="Users" Type="Self.User" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -136,30 +150,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WebStoreEF" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebStoreDB" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Pants" EntityType="Self.Pant" />
     <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoint" />
     <EntitySet Name="Shirts" EntityType="Self.Shirt" />
     <EntitySet Name="Shoes" EntityType="Self.Sho" />
-    <EntitySet Name="Trousers" EntityType="Self.Trouser" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK__Orders__ItemID__34C8D9D1" Association="Self.FK__Orders__ItemID__34C8D9D1">
+    <AssociationSet Name="FK__Orders__5DCAEF64" Association="Self.FK__Orders__5DCAEF64">
       <End Role="Shoes" EntitySet="Shoes" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__ItemID__37A5467C" Association="Self.FK__Orders__ItemID__37A5467C">
+    <AssociationSet Name="FK__Orders__60A75C0F" Association="Self.FK__Orders__60A75C0F">
       <End Role="Shirts" EntitySet="Shirts" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__ItemID__38996AB5" Association="Self.FK__Orders__ItemID__38996AB5">
-      <End Role="Trousers" EntitySet="Trousers" />
+    <AssociationSet Name="FK__Orders__619B8048" Association="Self.FK__Orders__619B8048">
+      <End Role="Pants" EntitySet="Pants" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__PickUpPo__35BCFE0A" Association="Self.FK__Orders__PickUpPo__35BCFE0A">
+    <AssociationSet Name="FK__Orders__PickUpPo__5EBF139D" Association="Self.FK__Orders__PickUpPo__5EBF139D">
       <End Role="PickUpPoints" EntitySet="PickUpPoints" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__UserID__36B12243" Association="Self.FK__Orders__UserID__36B12243">
+    <AssociationSet Name="FK__Orders__UserID__5FB337D6" Association="Self.FK__Orders__UserID__5FB337D6">
       <End Role="Users" EntitySet="Users" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>

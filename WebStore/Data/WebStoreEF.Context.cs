@@ -13,10 +13,10 @@ namespace WebStore.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebStoreEF : DbContext
+    public partial class WebStoreDB : DbContext
     {
-        public WebStoreEF()
-            : base("name=WebStoreEF")
+        public WebStoreDB()
+            : base("name=WebStoreDB")
         {
         }
     
@@ -26,10 +26,10 @@ namespace WebStore.Data
         }
     
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Pant> Pants { get; set; }
         public virtual DbSet<PickUpPoint> PickUpPoints { get; set; }
         public virtual DbSet<Shirt> Shirts { get; set; }
         public virtual DbSet<Sho> Shoes { get; set; }
-        public virtual DbSet<Trouser> Trousers { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -6,11 +6,11 @@
     [PickUpPointID] INT      NOT NULL,
     [Size]          INT      NOT NULL,
     [Quantity]      INT      NOT NULL,
-    PRIMARY KEY CLUSTERED ([OrderID] ASC),
-    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Shoes] ([ItemID]),
+    CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([OrderID] ASC, [ItemID] ASC, [Size] ASC),
+    FOREIGN KEY ([ItemID], [Size]) REFERENCES [dbo].[Shoes] ([ItemID], [Size]),
     FOREIGN KEY ([PickUpPointID]) REFERENCES [dbo].[PickUpPoints] ([ID]),
     FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID]),
-    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Shirts] ([ItemID]),
-    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Trousers] ([ItemID])
+    FOREIGN KEY ([ItemID], [Size]) REFERENCES [dbo].[Shirts] ([ItemID], [Size]),
+    FOREIGN KEY ([ItemID], [Size]) REFERENCES [dbo].[Pants] ([ItemID], [Size])
 );
 
