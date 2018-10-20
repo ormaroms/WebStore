@@ -12,7 +12,7 @@ namespace WebStore.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Shirt> Shirts { get; set; }
-        public DbSet<Pants> Trousers { get; set; }
+        public DbSet<Pants> Pants { get; set; }
         public DbSet<Shoes> Shoes { get; set; }
 
         public WebStoreContext()

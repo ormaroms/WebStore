@@ -47,22 +47,21 @@ textarea {
     margin-left: 40px;
 }
 
-.logo {
-    height: 50px;
-    float: left;
+.centerItems {
+    text-align: center;
+}
+
+.itemDisplay {
+    width: 100%;
+}
+
+.sideElement {
+    width: 100%;
+    padding: 5%;
+
 }
 
 .video {
-    height: 200px;
-    margin-left: 5px;
+    height:200px;
 }
 
-.weather {
-    height: 200px;
-    width: 376px;
-    margin-left: 11px;
-}
-
-.facebookLike {
-    height: 200px;
-}

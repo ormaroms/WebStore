@@ -150,7 +150,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WebStoreDB" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebStoreDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Pants" EntityType="Self.Pant" />
     <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoint" />

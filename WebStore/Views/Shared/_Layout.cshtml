@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title Shopping Store</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,31 +18,47 @@
             js.src = 'https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v3.1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="navbar navbar-inverse navbar-fixed-top">
 
-        <div class="container">
-            <div class="navbar-header">
-                <img class="logo" src="~/Images/Logo.png" />
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Webstore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+    <div class="row centerItems">
+        <img src="~/Images/Logo.png" />
     </div>
-    <div class="container body-content">
-        @RenderBody()
 
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ?
+                    "active" : "")">@Html.ActionLink("Man", "Shoes", "Man")</li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ?
+                    "active" : "")">@Html.ActionLink("Woman", "About", "Home")</li>
+                </ul>
+        </div>
+    </nav>
+    <div class="row body-content">
+        <div class="col-md-10"> @RenderBody() </div>
+        <div class="col-md-2">
+                <div class="row">
+                    <div class="sideElement">
+                        <a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
+                        </a><div id="awcc1539872498791" class="aw-widget-current" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1539872498791"></div>
+                        <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+                    </div>
+                </div>
+                <div class="row">
+                    <video controls class="sideElement video">
+                        <source src="~/Videos/promo.mp4" type="video/mp4" />
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+
+
+                <div class="row">
+                    <div class="sideElement">
+                        <div class="fb-page" data-href="https://www.facebook.com/Webstore-287749472066314/" data-width="450" data-height="700px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Webstore-287749472066314/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Webstore-287749472066314/">‏‎Webstore‎‏</a></blockquote></div>
+
+                    </div>
+                </div>           
+        </div>
+       
     </div>
 
     @Scripts.Render("~/bundles/jquery")

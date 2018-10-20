@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e51b6717e5c745fbae767a79cd7ac1ae" Name="Diagram1">
+      <Diagram DiagramId="4d19d73239cc4590bc674639d14b339a" Name="Diagram1">
         <EntityTypeShape EntityType="WebStoreDBModel.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Pant" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.PickUpPoint" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Shirt" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Sho" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.User" Width="1.5" PointX="6.375" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.User" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__619B8048" ManuallyRouted="false" />

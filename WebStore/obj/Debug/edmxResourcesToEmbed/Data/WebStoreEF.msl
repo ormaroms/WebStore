@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="WebStoreDBModelStoreContainer" CdmEntityContainer="WebStoreDB">
+  <EntityContainerMapping StorageEntityContainer="WebStoreDBModelStoreContainer" CdmEntityContainer="WebStoreDBEntities">
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="WebStoreDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">

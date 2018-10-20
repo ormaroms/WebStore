@@ -13,10 +13,10 @@ namespace WebStore.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebStoreDB : DbContext
+    public partial class WebStoreDBEntities : DbContext
     {
-        public WebStoreDB()
-            : base("name=WebStoreDB")
+        public WebStoreDBEntities()
+            : base("name=WebStoreDBEntities")
         {
         }
     

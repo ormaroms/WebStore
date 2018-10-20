@@ -328,7 +328,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WebStoreDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebStoreDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Pants" EntityType="Self.Pant" />
           <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoint" />
@@ -361,7 +361,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebStoreDBModelStoreContainer" CdmEntityContainer="WebStoreDB">
+        <EntityContainerMapping StorageEntityContainer="WebStoreDBModelStoreContainer" CdmEntityContainer="WebStoreDBEntities">
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WebStoreDBModel.Order">
               <MappingFragment StoreEntitySet="Orders">

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebStore.Models.Shoes>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Shoes";
+}
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+
+            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Shoes" ?
+                    "active" : "")">@Html.ActionLink("Shoes", "Shoes", "Man")</li>
+                    <li>@Html.ActionLink("Pants", "Pants", "Man")</li>
+
+                    @* ליצור לזה מה שצריךךךך אין לנו כוח *@
+                    <li>@Html.ActionLink("Shirts", "Shirts", "Man")</li>
+                </ul>
+            </div>
+</nav>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-3 col-xs-3 thumb">
+                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="itemDisplay" />
+
+
+                    <p> @Html.DisplayFor(modelItem => item.Price)</p>
+                </div>
+            }
+        </div>
+
