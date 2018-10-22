@@ -12,19 +12,16 @@ namespace WebStore.Controllers
         private WebStoreContext db = new WebStoreContext();
 
         public ActionResult Shoes() {
-            var shoes = db.Shoes.Where(x => x.Gender == "Men");
-
-            // working query 
-            // "select ItemID, Max(ImgPath), Max(Price), Max(Color), Max(Brand)
-            // from[dbo].Shoes where Gender = 'Men' group by ItemID"
-
+            var shoes = db.Shoes.Where(x => x.Gender == "Men").
+                GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
 
             return View(shoes.ToList());
         }
 
         public ActionResult Pants()
         {
-            var pants = db.Pants.Where(x => x.Gender == "Men");
+            var pants = db.Pants.Where(x => x.Gender == "Men").
+            GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
             return View(pants.ToList());
         }
     }

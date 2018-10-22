@@ -14,14 +14,13 @@
                 </ul>
             </div>
         </nav>
-        <div class="row">
+
+        <div class="displayRow">
             @foreach (var item in Model)
             {
-                <div class="col-lg-3 col-md-3 col-xs-3 thumb">
-                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="itemDisplay" />
-
-
-                    <p> @Html.DisplayFor(modelItem => item.Price)</p>
+                <div class="displayCol">
+                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+                    <p> @item.Price ₪</p>
                 </div>
             }
         </div>

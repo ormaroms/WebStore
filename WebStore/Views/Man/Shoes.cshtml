@@ -20,16 +20,14 @@
                     <li>@Html.ActionLink("Shirts", "Shirts", "Man")</li>
                 </ul>
             </div>
-</nav>
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-3 col-md-3 col-xs-3 thumb">
-                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="itemDisplay" />
-
-
-                    <p> @Html.DisplayFor(modelItem => item.Price)</p>
-                </div>
-            }
-        </div>
+        </nav>
+<div class="displayRow">
+    @foreach (var item in Model)
+    {
+    <div class="displayCol">
+        <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+       <p> @item.Price</p>
+    </div>
+    }
+</div>
 

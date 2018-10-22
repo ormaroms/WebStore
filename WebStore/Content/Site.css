@@ -1,4 +1,20 @@
-﻿body {
+﻿
+.displayCol {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  
+}
+
+.displayRow {
+    content: "";
+    clear: both;
+    display: table;
+    margin: auto;
+    text-align: center;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -36,10 +52,13 @@ textarea {
     line-height: 32px;
     letter-spacing: 2.8px;
     font-weight: 700;
-    color: #fff;
-    font-weight: 900;
     font-style: italic;
     text-align: center;
+}
+
+.displayImg {
+    min-width: 200px;
+    max-width: 250px;
 }
 
 .itemLabel {
@@ -55,10 +74,9 @@ textarea {
     width: 100%;
 }
 
-.sideElement {
-    width: 100%;
-    padding: 5%;
-
+.weather {
+    min-width: 30%;
+    max-width: 40%;
 }
 
 .video {
