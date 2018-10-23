@@ -1,79 +1,84 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title Shopping Store</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title Shopping Store</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v3.1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+	<div id="fb-root"></div>
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v3.1';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	<div class="siteTop">
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="weather">
+					<a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
+					</a><div id="awcc1539872498791" class="aw-widget-current" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1539872498791"></div>
+					<script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+				</div>
+			</div>		
+			<div class="col-sm-3">
+				<i class="glyphicon glyphicon-map-marker icon"></i>
+				<i class="glyphicon glyphicon-info-sign icon"></i>
+				<i class="glyphicon glyphicon-shopping-cart icon"></i>
+				<i class="glyphicon glyphicon-user icon"></i>
 
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="weather">
-                <a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
-                </a><div id="awcc1539872498791" class="aw-widget-current" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1539872498791"></div>
-                <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-            </div>
-        </div>
-        <div class="col-sm-7">
-            <img src="~/Images/Logo.png" />
-        </div>
-        @*<div class="col-sm">
-        </div>*@
-        </div>
+			</div>
+		</div>
+	</div>
 
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ?
+
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ?
                     "active" : "")">@Html.ActionLink("Man", "Shoes", "Man")</li>
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ?
+					<li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "About" ?
                     "active" : "")">@Html.ActionLink("Woman", "About", "Home")</li>
-                </ul>
-            </div>
-        </nav>
-        <div class="row body-content">
-            @RenderBody()
-            @*<div class="col-md-2">
-                    <div class="row">
-                        <div class="sideElement">
-                            <a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
-                            </a><div id="awcc1539872498791" class="aw-widget-current" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1539872498791"></div>
-                            <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <video controls class="sideElement video">
-                            <source src="~/Videos/promo.mp4" type="video/mp4" />
-                            Your browser does not support HTML5 video.
-                        </video>
-                    </div>
+				</ul>
+			</div>
+		</nav>
+		<div class="row body-content">
+			@RenderBody()
+			@*<div class="col-md-2">
+						<div class="row">
+							<div class="sideElement">
+								<a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
+								</a><div id="awcc1539872498791" class="aw-widget-current" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1539872498791"></div>
+								<script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+							</div>
+						</div>
+						<div class="row">
+							<video controls class="sideElement video">
+								<source src="~/Videos/promo.mp4" type="video/mp4" />
+								Your browser does not support HTML5 video.
+							</video>
+						</div>
 
 
-                    <div class="row">
-                        <div class="sideElement">
-                            <div class="fb-page" data-href="https://www.facebook.com/Webstore-287749472066314/" data-width="450" data-height="700px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Webstore-287749472066314/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Webstore-287749472066314/">‏‎Webstore‎‏</a></blockquote></div>
+						<div class="row">
+							<div class="sideElement">
+								<div class="fb-page" data-href="https://www.facebook.com/Webstore-287749472066314/" data-width="450" data-height="700px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Webstore-287749472066314/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Webstore-287749472066314/">‏‎Webstore‎‏</a></blockquote></div>
 
-                        </div>
-                    </div>
-            </div>*@
+							</div>
+						</div>
+				</div>*@
 
-        </div>
+		</div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-</body>
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@RenderSection("scripts", required: false)
+	</body>
 </html>

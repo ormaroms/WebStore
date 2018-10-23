@@ -52,13 +52,13 @@ INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Size], [Quantity], [Bran
 VALUES (6, 129.90, 'Blue', 38, 3, 'Bershka', 'Women', '~/Images/WomanPants3.JPG');
 
 INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Size], [Quantity], [Brand], [Gender], [ImgPath])
-VALUES (20, 189.90, 'Black', 38, 3, 'Bershka', 'Men', '~/Images/WomanPants4.JPG');
+VALUES (20, 189.90, 'Black', 38, 3, 'Bershka', 'Men', '~/Images/ManPants4.JPG');
 
 INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Size], [Quantity], [Brand], [Gender], [ImgPath])
-VALUES (20, 189.90, 'Black', 40, 4, 'Bershka', 'Men', '~/Images/WomanPants4.JPG');
+VALUES (20, 189.90, 'Black', 40, 4, 'Bershka', 'Men', '~/Images/ManPants4.JPG');
 
 INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Size], [Quantity], [Brand], [Gender], [ImgPath])
-VALUES (20, 189.90, 'Black', 42, 8, 'Bershka', 'Men', '~/Images/WomanPants4.JPG');
+VALUES (20, 189.90, 'Black', 42, 8, 'Bershka', 'Men', '~/Images/ManPants4.JPG');
 
 
 
