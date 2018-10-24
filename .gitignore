@@ -2,8 +2,6 @@
 .vs/config/applicationhost.config        
 WebStore/Data/*
 WebStore/Data/WebStoreEF.*
-WebStore/Web.config
-WebStore/WebStore.csproj
 WebStore/bin/*
 WebStore/obj/Debug/*
 
