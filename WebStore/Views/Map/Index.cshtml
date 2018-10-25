@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebStore.Models.PickUpPoint>
+	@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	}
+	<div>
+		Our Pick Up Points:
+
+	</div>
+
+	<head>
+		<style>
+			#map {
+				width: 500px;
+				height: 400px;
+				background-color: #CCC;
+			}
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdD4KOm031O1bK4zMqkNZ_WuCUEDahnI&callback=initMap"
+				type="text/javascript"></script>
+		<script>
+
+	 var map;
+    var geocoder;
+		function initMap() {
+
+			var latlng = new google.maps.LatLng(31.682216, 34.956404);
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: latlng,
+					zoom: 12
+				});
+
+        //map = new google.maps.Map(document.getElementById("map"), {
+        //    center: { lat: 31.682216, lng: 34.956404 },
+        //    zoom: 7
+        //});
+        geocoder = new google.maps.Geocoder();
+
+        //$.getJSON('@Url.Action("GetPickUpPoints", "Map")')
+        //    .success(function (addresses) {
+        //        markMapWithDealerAddresses(addresses);
+        //    });
+    }
+
+    initMap();
+
+    //function addMarker(location, map) {
+    //    var marker = new google.maps.Marker({
+    //        position: location,
+    //        label: 'D',
+    //        map: map
+    //    });
+    //}
+
+    //function geocodeAddress(geocoder, map, address) {
+    //    geocoder.geocode({ 'address': address }, function (results, status) {
+    //        if (status === google.maps.GeocoderStatus.OK) {
+    //            addMarker(results[0].geometry.location, map);
+    //        } else {
+    //            console.log('Geocode was not successful for the following reason: ' + status);
+    //        }
+    //    });
+    //}
+
+    //function markMapWithDealerAddresses(addresses) {
+    //    for (var i = 0; i < addresses.length; i++) {
+    //        var address = addresses[i];
+    //        geocodeAddress(geocoder, map, address);
+    //    }
+    //}
+		</script>
+	</head>

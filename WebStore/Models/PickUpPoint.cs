@@ -11,7 +11,7 @@ namespace WebStore.Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-        public float LocationLongitude { get; set; }
-        public float LocationLatitude { get; set; }
+        public float LcationLongitude { get; set; }
+        public float LcationLatitude { get; set; }
     }
 }
