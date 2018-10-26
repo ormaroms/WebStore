@@ -8,22 +8,25 @@ using WebStore.Models;
 
 namespace WebStore.Controllers
 {
-	public class MapController : Controller
-	{
-		// GET: Map
-		public ActionResult Index()
-		{
-			return View();
-		}
+    public class MapController : Controller
+    {
 
-		public string GetPickUpPoints()
-		{
-			
-			using (WebStoreContext db = new WebStoreContext())
-			{
-				return JsonConvert.SerializeObject(db.PickUpPoints);
-			}
-		}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-	}
+        public string GetPickUpPoints()
+        {
+            List<PickUpPoint> pickUpPointsJson = new List<PickUpPoint>();
+
+            using (WebStoreContext db = new WebStoreContext())
+            {
+                db.PickUpPoints.ToList().ForEach(point => pickUpPointsJson.
+                    Add(point));
+            }
+
+            return JsonConvert.SerializeObject(pickUpPointsJson);
+        }
+    }
 }

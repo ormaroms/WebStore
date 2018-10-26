@@ -1,71 +1,53 @@
 ﻿@model IEnumerable<WebStore.Models.PickUpPoint>
-	@{
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	}
-	<div>
-		Our Pick Up Points:
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align: center;">
+    <h2>Our Pick Up Points:</h2>
 
-	</div>
+    <div id="map_canvas" style="width:800px; height:500px ; margin: auto;"></div>
+</div>
 
-	<head>
-		<style>
-			#map {
-				width: 500px;
-				height: 400px;
-				background-color: #CCC;
-			}
-		</style>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfdD4KOm031O1bK4zMqkNZ_WuCUEDahnI&callback=initMap"
-				type="text/javascript"></script>
-		<script>
 
-	 var map;
-    var geocoder;
-		function initMap() {
+@section Scripts {
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Jb63GNFSf3A09oSBt8au0yYkdO1DG-0&callback=Initialize"></script>
+    <script type="text/javascript">
 
-			var latlng = new google.maps.LatLng(31.682216, 34.956404);
-				map = new google.maps.Map(document.getElementById('map'), {
-					center: latlng,
-					zoom: 12
-				});
+            function Initialize() {
+                var mapOptions = {
+                    zoom: 8,
+                    center: new google.maps.LatLng(32.0740769, 34.7922028),
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                };
 
-        //map = new google.maps.Map(document.getElementById("map"), {
-        //    center: { lat: 31.682216, lng: 34.956404 },
-        //    zoom: 7
-        //});
-        geocoder = new google.maps.Geocoder();
+                var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-        //$.getJSON('@Url.Action("GetPickUpPoints", "Map")')
-        //    .success(function (addresses) {
-        //        markMapWithDealerAddresses(addresses);
-        //    });
-    }
+                $.getJSON('@Url.Action("GetPickUpPoints", "Map")')
+                    .success(function (points) {
+                        drawMapMarkers(points);
+                    });
 
-    initMap();
+                function drawMapMarkers(points) {
+                    points.forEach(function (point) {
+                        var marker = new google.maps.Marker({
+                            'position': new google.maps.LatLng(point.LcationLatitude, point.LcationLongitude),
+                            'map': map,
+                            'title': point.Name
+                        });
 
-    //function addMarker(location, map) {
-    //    var marker = new google.maps.Marker({
-    //        position: location,
-    //        label: 'D',
-    //        map: map
-    //    });
-    //}
+                        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 
-    //function geocodeAddress(geocoder, map, address) {
-    //    geocoder.geocode({ 'address': address }, function (results, status) {
-    //        if (status === google.maps.GeocoderStatus.OK) {
-    //            addMarker(results[0].geometry.location, map);
-    //        } else {
-    //            console.log('Geocode was not successful for the following reason: ' + status);
-    //        }
-    //    });
-    //}
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "<div><h4>" +
+                                point.Name + "</h4>" + "<div><p>Opening hours: 9AM - 6PM" +
+                                "</p></div></div>"
+                        });
 
-    //function markMapWithDealerAddresses(addresses) {
-    //    for (var i = 0; i < addresses.length; i++) {
-    //        var address = addresses[i];
-    //        geocodeAddress(geocoder, map, address);
-    //    }
-    //}
-		</script>
-	</head>
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    });
+                }
+            }
+    </script>
+}
