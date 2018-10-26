@@ -1,0 +1,69 @@
+drop table dbo.Orders;
+drop table dbo.Pants;
+drop table dbo.PickUpPoints;
+drop table dbo.Shirts;
+drop table dbo.Shoes;
+drop table dbo.Users;
+
+CREATE TABLE [dbo].[Users] (
+    [UserID]   INT        NOT NULL,
+    [UserName] NCHAR (10) NOT NULL,
+    [Passwod]  NCHAR (10) NOT NULL,
+    [isAdmin]  BIT        NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserID] ASC)
+);
+
+CREATE TABLE [dbo].[Shoes] (
+    [ItemID]  INT        NOT NULL,
+    [Price]   FLOAT (53) NOT NULL,
+    [Color]   NCHAR (10) NOT NULL,
+    [Brand]   NCHAR (10) NOT NULL,
+    [Gender]  NCHAR (10) NOT NULL,
+    [ImgPath] NCHAR (40) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
+
+CREATE TABLE [dbo].[Shirts] (
+    [ItemID]  INT        NOT NULL,
+    [Price]   FLOAT (53) NOT NULL,
+    [Color]   NCHAR (10) NOT NULL,
+    [Brand]   NCHAR (10) NOT NULL,
+    [Gender]  NCHAR (10) NOT NULL,
+    [ImgPath] NCHAR (40) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
+
+CREATE TABLE [dbo].[PickUpPoints] (
+    [ID]                 INT           NOT NULL,
+    [Name]               NVARCHAR (50) NULL,
+    [LocationLongitude ] FLOAT (53)    NOT NULL,
+    [LocationLatitude ]  FLOAT (53)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+CREATE TABLE [dbo].[Pants] (
+    [ItemID]  INT        NOT NULL,
+    [Price]   FLOAT (53) NOT NULL,
+    [Color]   NCHAR (10) NOT NULL,
+    [Brand]   NCHAR (10) NOT NULL,
+    [Gender]  NCHAR (10) NOT NULL,
+    [ImgPath] NCHAR (40) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
+
+
+CREATE TABLE [dbo].[Orders] (
+    [OrderID]       INT      NOT NULL,
+    [UserID]        INT      NOT NULL,
+    [OrderDate]     DATETIME NOT NULL,
+    [ItemID]        INT      NOT NULL,
+    [PickUpPointID] INT      NOT NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([OrderID] ASC, [ItemID] ASC),
+    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Shoes] ([ItemID]),
+    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Shirts] ([ItemID]),
+    FOREIGN KEY ([ItemID]) REFERENCES [dbo].[Pants] ([ItemID]),
+    FOREIGN KEY ([PickUpPointID]) REFERENCES [dbo].[PickUpPoints] ([ID]),
+    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
+);
+
+

@@ -1,0 +1,194 @@
+-- PANTS
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (1, 89.90, 'Black', 'ASOS', 'Men', '~/Images/ManPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (1, 89.90, 'Black', 'ASOS', 'Men', '~/Images/ManPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (1, 89.90, 'Black', 'ASOS', 'Men', '~/Images/ManPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (2, 179.90, 'Blue', 'Renuar', 'Men', '~/Images/ManPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (2, 179.90, 'Blue', 'Renuar', 'Men', '~/Images/ManPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (2, 179.90, 'Blue',  'Renuar', 'Men', '~/Images/ManPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (3, 179.90, 'Black', 'Renuar', 'Men', '~/Images/ManPants3.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (3, 179.90, 'Black',  'Renuar', 'Men', '~/Images/ManPants3.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (4, 89.90, 'Black', 'Adidas', 'Women', '~/Images/WomanPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (4, 89.90, 'Black','Adidas', 'Women', '~/Images/WomanPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (4, 89.90, 'Black', 'Adidas', 'Women', '~/Images/WomanPants2.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (5, 149.90, 'Blue',  'Bershka', 'Women', '~/Images/WomanPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (5, 149.90, 'Blue', 'Bershka', 'Women', '~/Images/WomanPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (5, 149.90, 'Blue', 'Bershka', 'Women', '~/Images/WomanPants1.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (6, 129.90, 'Blue', 'Bershka', 'Women', '~/Images/WomanPants3.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (6, 129.90, 'Blue', 'Bershka', 'Women', '~/Images/WomanPants3.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (6, 129.90, 'Blue', 'Bershka', 'Women', '~/Images/WomanPants3.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color],[Brand], [Gender], [ImgPath])
+VALUES (20, 189.90, 'Black', 'Bershka', 'Men', '~/Images/ManPants4.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (20, 189.90, 'Black', 'Bershka', 'Men', '~/Images/ManPants4.JPG');
+
+INSERT INTO [dbo].[Pants] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (20, 189.90, 'Black', 'Bershka', 'Men', '~/Images/ManPants4.JPG');
+
+
+
+-- SHIRTS
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (7, 119.90, 'White',  'Levi''s', 'Men', '~/Images/ManShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (7, 119.90, 'White', 'Levi''s', 'Men', '~/Images/ManShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (7, 119.90, 'White', 'Levi''s', 'Men', '~/Images/ManShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (8, 89.90, 'Black', 'Asos', 'Men', '~/Images/ManShirt2.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (8, 89.90, 'Black', 'Asos', 'Men', '~/Images/ManShirt2.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (8, 89.90, 'Black', 'Asos', 'Men', '~/Images/ManShirt2.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (9, 69.90, 'Green',  'Renuar', 'Men', '~/Images/ManShirt3.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color], [Brand], [Gender], [ImgPath])
+VALUES (9, 69.90, 'Green','Renuar', 'Men', '~/Images/ManShirt3.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (10, 119.90, 'Black','Renuar', 'Women', '~/Images/WomanShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (10, 119.90, 'Black', 'Renuar', 'Women', '~/Images/WomanShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (10, 119.90, 'Black', 'Renuar', 'Women', '~/Images/WomanShirt1.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (11, 79.90, 'Green', 'Bershka', 'Women', '~/Images/WomanShirt2.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (11, 79.90, 'Green','Bershka', 'Women', '~/Images/WomanShirt2.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (12, 99.90, 'Gray',  'Asos', 'Women', '~/Images/WomanShirt3.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (12, 99.90, 'Gray', 'Asos', 'Women', '~/Images/WomanShirt3.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (12, 99.90, 'Gray', 'Asos', 'Women', '~/Images/WomanShirt3.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (21, 89.90, 'Gray',  'Asos', 'Women', '~/Images/WomanShirt4.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (21, 89.90, 'Gray', 'Asos', 'Women', '~/Images/WomanShirt4.JPG');
+
+INSERT INTO [dbo].[Shirts] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (21, 89.90, 'Gray',  'Asos', 'Women', '~/Images/WomanShirt4.JPG');
+
+
+
+-- SHOES
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (13, 349.90, 'Black',  'Vans', 'Men', '~/Images/ManShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (13, 349.90, 'Black',  'Vans', 'Men', '~/Images/ManShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (13, 349.90, 'Black',  'Vans', 'Men', '~/Images/ManShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (14, 245.90, 'White', 'Renuar', 'Men', '~/Images/ManShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (14, 245.90, 'White','Renuar', 'Men', '~/Images/ManShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (14, 245.90, 'White', 'Renuar', 'Men', '~/Images/ManShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (15, 399.90, 'Brown', 'Renuar', 'Men', '~/Images/ManShoes3.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (15, 399.90, 'Brown',  'Renuar', 'Men', '~/Images/ManShoes3.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (15, 399.90, 'Brown','Renuar', 'Men', '~/Images/ManShoes3.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (16, 349.90, 'Gray',  'Adidas', 'Men', '~/Images/ManShoes4.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (16, 349.90, 'Gray', 'Adidas', 'Men', '~/Images/ManShoes4.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (16, 349.90, 'Gray', 'Adidas', 'Men', '~/Images/ManShoes4.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (17, 299.90, 'Black', 'Bershka', 'Women', '~/Images/WomanShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (17, 299.90, 'Black', 'Bershka', 'Women', '~/Images/WomanShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (17, 299.90, 'Black', 'Bershka', 'Women', '~/Images/WomanShoes1.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (18, 249.90, 'White', 'Adidas', 'Women', '~/Images/WomanShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (18, 249.90, 'White', 'Adidas', 'Women', '~/Images/WomanShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (18, 249.90, 'White', 'Adidas', 'Women', '~/Images/WomanShoes2.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (19, 349.90, 'Black', 'Renuar', 'Women', '~/Images/WomanShoes3.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (19, 349.90, 'Black', 'Renuar', 'Women', '~/Images/WomanShoes3.JPG');
+
+INSERT INTO [dbo].[Shoes] ([ItemID], [Price], [Color],  [Brand], [Gender], [ImgPath])
+VALUES (19, 349.90, 'Black', 'Renuar', 'Women', '~/Images/WomanShoes3.JPG');
+
+
+
+
+
+

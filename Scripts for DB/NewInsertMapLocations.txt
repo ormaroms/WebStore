@@ -1,0 +1,16 @@
+ALTER TABLE [dbo].[PickUpPoints] ALTER COLUMN [Name] nvarchar(50);
+
+insert into [dbo].[PickUpPoints]([ID], [Name], [LocationLatitude], [LocationLongitude])
+values (1, 'Azrieli Mall',32.0740769, 34.7922028);
+
+insert into [dbo].[PickUpPoints]([ID], [Name], [LocationLatitude], [LocationLongitude])
+values (2, 'Ayalon Mall', 32.099765, 34.829793);
+
+insert into [dbo].[PickUpPoints]([ID], [Name], [LocationLatitude], [LocationLongitude])
+values (3, 'Zahav Mall', 31.990628, 34.776448);
+
+insert into [dbo].[PickUpPoints]([ID], [Name], [LocationLatitude], [LocationLongitude])
+values (4, 'Ice Mall',29.554109 , 34.955602);
+
+insert into [dbo].[PickUpPoints]([ID], [Name], [LocationLatitude], [LocationLongitude])
+values (5, 'Haifa Mall',32.789613 , 34.965129);
