@@ -93,8 +93,9 @@ textarea {
 	max-width: 40%;
 }
 
-.video {
-    height:200px;
+.film {
+    height: 40%;
+	width: 40%;
 }
 
 .icon {

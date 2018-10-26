@@ -251,6 +251,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Images\backgroud.jpg" />
+    <Content Include="Images\hr.png" />
     <Content Include="Images\Logo.png" />
     <Content Include="Images\ManPants1.JPG" />
     <Content Include="Images\ManPants2.JPG" />
