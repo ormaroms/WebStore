@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Data\Orders.cs">
@@ -246,6 +247,7 @@
     <Compile Include="Models\WebStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\WebStoreDB.mdf" />
@@ -320,6 +322,7 @@
     <Content Include="Videos\promo.mp4" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Graph\Graph.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Views\Map\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
