@@ -22,7 +22,7 @@
             <PropertyRef Name="ItemTypeId" />
           </Key>
           <Property Name="ItemTypeId" Type="int" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -83,7 +83,7 @@
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Passwod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Items__ItemTypeI__01142BA1">
@@ -230,6 +230,7 @@
           <Property Name="Passwod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__440B1D61" FromRole="Users" ToRole="Orders" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK__Orders__PickUpPo__4316F928">
           <End Role="PickUpPoints" Type="Self.PickUpPoints" Multiplicity="1" />
@@ -300,7 +301,7 @@
             <PropertyRef Name="ItemTypeId" />
           </Key>
           <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" FromRole="ItemTypes" ToRole="Items" />
         </EntityType>
         <Association Name="FK__Orders__ItemID__6E01572D">
@@ -393,9 +394,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WebStoreDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Passwod" ColumnName="Passwod" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -435,7 +436,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
