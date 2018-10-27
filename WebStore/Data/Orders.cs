@@ -20,10 +20,8 @@ namespace WebStore.Data
         public int ItemID { get; set; }
         public int PickUpPointID { get; set; }
     
-        public virtual Shoes Shoes { get; set; }
-        public virtual Shirts Shirts { get; set; }
-        public virtual Pants Pants { get; set; }
         public virtual PickUpPoints PickUpPoints { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Items Items { get; set; }
     }
 }

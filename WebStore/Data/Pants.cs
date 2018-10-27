@@ -14,20 +14,11 @@ namespace WebStore.Data
     
     public partial class Pants
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pants()
-        {
-            this.Orders = new HashSet<Orders>();
-        }
-    
         public int ItemID { get; set; }
         public double Price { get; set; }
         public string Color { get; set; }
         public string Brand { get; set; }
         public string Gender { get; set; }
         public string ImgPath { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

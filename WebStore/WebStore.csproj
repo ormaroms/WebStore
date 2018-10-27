@@ -201,6 +201,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Data\Items.cs">
+      <DependentUpon>WebStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemTypes.cs">
+      <DependentUpon>WebStoreEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Orders.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
@@ -237,6 +243,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PickUpPoint.cs" />
     <Compile Include="Models\Shirt.cs" />

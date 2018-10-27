@@ -6,16 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b4e05677fcca404a8662718bebe953a1" Name="Diagram1">
         <EntityTypeShape EntityType="WebStoreDBModel.Orders" Width="1.5" PointX="3.25" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Pants" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Pants" Width="1.5" PointX="3.875" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.PickUpPoints" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Shirts" Width="1.5" PointX="0.625" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Shoes" Width="1.5" PointX="4.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Shirts" Width="1.5" PointX="7.125" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Shoes" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Users" Width="1.5" PointX="7.875" PointY="2" IsExpanded="true" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__PickUpPo__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__UserID__440B1D61" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Items" Width="1.5" PointX="0.5" PointY="0.625" />
+        <EntityTypeShape EntityType="WebStoreDBModel.ItemTypes" Width="1.5" PointX="2.25" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__6E01572D" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

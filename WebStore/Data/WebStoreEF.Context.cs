@@ -31,5 +31,7 @@ namespace WebStore.Data
         public virtual DbSet<Shirts> Shirts { get; set; }
         public virtual DbSet<Shoes> Shoes { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Items> Items { get; set; }
+        public virtual DbSet<ItemTypes> ItemTypes { get; set; }
     }
 }

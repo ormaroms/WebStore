@@ -71,12 +71,13 @@
         <script src="http://d3js.org/d3.v3.min.js"></script>
 
         <script type="text/javascript">
+
                 function dashboard(id, fData){
                 var barColor = 'steelblue';
-                function segColor(c){ return {shoes:"#807dba", shirts:"#e08214",pans:"#41ab5d"}[c]; }
+                function segColor(c){ return {Shoes:"#807dba", Shirt:"#e08214",Pants:"#41ab5d"}[c]; }
 
                 // compute total for each Brand.
-                fData.forEach(function(d){d.total = d.clothes.shoes + d.clothes.shirts + d.clothes.pans;});
+                fData.forEach(function(d){d.total = d.clothes.Shoes + d.clothes.Shirt + d.clothes.Pants;});
 
                 // function to handle histogram.
                 function histoGram(fD){
@@ -258,7 +259,7 @@
                 }
 
                 // calculate total frequency by segment for all Brand.
-                var tF = ['shoes','shirts','pans'].map(function(d){
+                var tF = ['Shoes','Shirt','Pants'].map(function(d){
                     return {type:d, clothes: d3.sum(fData.map(function(t){ return t.clothes[d];}))};
                 });
 
@@ -272,18 +273,22 @@
         </script>
 
         <script>
-var clothesData=[
-{ Brand: 'ASOS', clothes:{shoes:45, shirts:23, pans:2}}
-,{ Brand:'Renuar',clothes:{shoes:12, shirts:3, pans:4}}
-,{ Brand:'Adidas',clothes:{shoes:2, shirts:45, pans:34}}
-,{ Brand:'Bershka',clothes:{shoes:34, shirts:8, pans:45}}
-,{ Brand:"Levi's",clothes:{shoes:99, shirts:45, pans:56}}
-,{ Brand:'Vans',clothes:{shoes:4, shirts:34, pans:8}}
-,{Brand:'nick',clothes:{shoes:34, shirts:78, pans:45}}
-,{Brand:'pull&baer',clothes:{shoes:35, shirts:45, pans:56}}
-,{Brand:'zara',clothes:{shoes:12, shirts:3, pans:7}}
-];
+             var clothesData = [];
+            $.getJSON('@Url.Action("GetData", "Graph")')
+                .success(function (groups) {
+                    for (var i = 0; i < groups.length; i++) {
+                            var currentBrand = groups[i][0].Brand;
+                            cuttentData = { Brand: currentBrand, clothes: { Shoes: 0, Shirt: 0, Pants: 0 } };
+                            var currentGroups = groups.filter(x => x[0].Brand === currentBrand);
+                            currentGroups.forEach(function (group) {
+                                cuttentData.clothes[group[0].ItemTypeName] = group.length;
+                                groups.splice(groups.indexOf(group), 1);
+                            });
+                            clothesData[clothesData.length] = cuttentData;
+                    }
 
-dashboard('#dashboard',clothesData);
+                    dashboard('#dashboard', clothesData);
+                    });
+
         </script>
 }

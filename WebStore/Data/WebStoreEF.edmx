@@ -4,7 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Color" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Brand" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ImgPath" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemTypes">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="25" Nullable="false" />
+        </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -67,11 +86,23 @@
           <Property Name="Passwod" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Orders__ItemID__403A8C7D">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+        <Association Name="FK__Items__ItemTypeI__01142BA1">
+          <End Role="ItemTypes" Type="Self.ItemTypes" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypes">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ItemID__6E01572D">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Shoes">
+            <Principal Role="Items">
               <PropertyRef Name="ItemID" />
             </Principal>
             <Dependent Role="Orders">
@@ -79,31 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__ItemID__412EB0B6">
-          <End Role="Shirts" Type="Self.Shirts" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shirts">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__ItemID__4222D4EF">
-          <End Role="Pants" Type="Self.Pants" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pants">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__PickUpPo__4316F928">
+        <Association Name="FK__Orders__PickUpPo__5629CD9C">
           <End Role="PickUpPoints" Type="Self.PickUpPoints" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -115,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__UserID__440B1D61">
+        <Association Name="FK__Orders__UserID__571DF1D5">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,35 +135,32 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WebStoreDBModelStoreContainer">
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypes" EntityType="Self.ItemTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pants" EntityType="Self.Pants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoints" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shirts" EntityType="Self.Shirts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shoes" EntityType="Self.Shoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Orders__ItemID__403A8C7D" Association="Self.FK__Orders__ItemID__403A8C7D">
-            <End Role="Shoes" EntitySet="Shoes" />
+          <AssociationSet Name="FK__Items__ItemTypeI__01142BA1" Association="Self.FK__Items__ItemTypeI__01142BA1">
+            <End Role="ItemTypes" EntitySet="ItemTypes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ItemID__6E01572D" Association="Self.FK__Orders__ItemID__6E01572D">
+            <End Role="Items" EntitySet="Items" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__ItemID__412EB0B6" Association="Self.FK__Orders__ItemID__412EB0B6">
-            <End Role="Shirts" EntitySet="Shirts" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__ItemID__4222D4EF" Association="Self.FK__Orders__ItemID__4222D4EF">
-            <End Role="Pants" EntitySet="Pants" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__PickUpPo__4316F928" Association="Self.FK__Orders__PickUpPo__4316F928">
+          <AssociationSet Name="FK__Orders__PickUpPo__5629CD9C" Association="Self.FK__Orders__PickUpPo__5629CD9C">
             <End Role="PickUpPoints" EntitySet="PickUpPoints" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__UserID__440B1D61" Association="Self.FK__Orders__UserID__440B1D61">
+          <AssociationSet Name="FK__Orders__UserID__571DF1D5" Association="Self.FK__Orders__UserID__571DF1D5">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -170,11 +174,9 @@
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ItemID" Type="Int32" Nullable="false" />
           <Property Name="PickUpPointID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Shoes" Relationship="Self.FK__Orders__ItemID__403A8C7D" FromRole="Orders" ToRole="Shoes" />
-          <NavigationProperty Name="Shirts" Relationship="Self.FK__Orders__ItemID__412EB0B6" FromRole="Orders" ToRole="Shirts" />
-          <NavigationProperty Name="Pants" Relationship="Self.FK__Orders__ItemID__4222D4EF" FromRole="Orders" ToRole="Pants" />
           <NavigationProperty Name="PickUpPoints" Relationship="Self.FK__Orders__PickUpPo__4316F928" FromRole="Orders" ToRole="PickUpPoints" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__440B1D61" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="Items" Relationship="WebStoreDBModel.FK__Orders__ItemID__6E01572D" FromRole="Orders" ToRole="Items" />
         </EntityType>
         <EntityType Name="Pants">
           <Key>
@@ -186,7 +188,6 @@
           <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__4222D4EF" FromRole="Pants" ToRole="Orders" />
         </EntityType>
         <EntityType Name="PickUpPoints">
           <Key>
@@ -208,7 +209,6 @@
           <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__412EB0B6" FromRole="Shirts" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Shoes">
           <Key>
@@ -220,7 +220,6 @@
           <Property Name="Brand" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="ImgPath" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ItemID__403A8C7D" FromRole="Shoes" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -232,42 +231,6 @@
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__440B1D61" FromRole="Users" ToRole="Orders" />
         </EntityType>
-        <Association Name="FK__Orders__ItemID__403A8C7D">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shoes">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__ItemID__412EB0B6">
-          <End Role="Shirts" Type="Self.Shirts" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shirts">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__ItemID__4222D4EF">
-          <End Role="Pants" Type="Self.Pants" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pants">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Orders__PickUpPo__4316F928">
           <End Role="PickUpPoints" Type="Self.PickUpPoints" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -299,18 +262,6 @@
           <EntitySet Name="Shirts" EntityType="Self.Shirts" />
           <EntitySet Name="Shoes" EntityType="Self.Shoes" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Orders__ItemID__403A8C7D" Association="Self.FK__Orders__ItemID__403A8C7D">
-            <End Role="Shoes" EntitySet="Shoes" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__ItemID__412EB0B6" Association="Self.FK__Orders__ItemID__412EB0B6">
-            <End Role="Shirts" EntitySet="Shirts" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__ItemID__4222D4EF" Association="Self.FK__Orders__ItemID__4222D4EF">
-            <End Role="Pants" EntitySet="Pants" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__Orders__PickUpPo__4316F928" Association="Self.FK__Orders__PickUpPo__4316F928">
             <End Role="PickUpPoints" EntitySet="PickUpPoints" />
             <End Role="Orders" EntitySet="Orders" />
@@ -319,7 +270,63 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="Items" EntityType="WebStoreDBModel.Items" />
+          <EntitySet Name="ItemTypes" EntityType="WebStoreDBModel.ItemTypes" />
+          <AssociationSet Name="FK__Orders__ItemID__6E01572D" Association="WebStoreDBModel.FK__Orders__ItemID__6E01572D">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__ItemTypeI__01142BA1" Association="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1">
+            <End Role="ItemTypes" EntitySet="ItemTypes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ImgPath" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="WebStoreDBModel.FK__Orders__ItemID__6E01572D" FromRole="Items" ToRole="Orders" />
+          <NavigationProperty Name="ItemTypes" Relationship="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" FromRole="Items" ToRole="ItemTypes" />
+        </EntityType>
+        <EntityType Name="ItemTypes">
+          <Key>
+            <PropertyRef Name="ItemTypeId" />
+          </Key>
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" FromRole="ItemTypes" ToRole="Items" />
+        </EntityType>
+        <Association Name="FK__Orders__ItemID__6E01572D">
+          <End Type="WebStoreDBModel.Items" Role="Items" Multiplicity="1" />
+          <End Type="WebStoreDBModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__ItemTypeI__01142BA1">
+          <End Type="WebStoreDBModel.ItemTypes" Role="ItemTypes" Multiplicity="1" />
+          <End Type="WebStoreDBModel.Items" Role="Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemTypes">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -390,6 +397,27 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Passwod" ColumnName="Passwod" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="WebStoreDBModel.Items">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="WebStoreDBModel.ItemTypes">
+              <MappingFragment StoreEntitySet="ItemTypes">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
