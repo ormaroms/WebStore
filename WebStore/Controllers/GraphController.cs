@@ -45,12 +45,3 @@ namespace WebStore.Controllers
 
     }
 }
-
-
-
-//select brand, ItemTypeId, count(ItemTypeId)
-//from(
-//select items.Brand , items.ItemTypeId
-//from orders
-//inner join items on orders.ItemID = items.ItemID) f
-//group by brand, ItemTypeId

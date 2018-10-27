@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="WebStoreDBModel.PickUpPoints" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Shirts" Width="1.5" PointX="7.125" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WebStoreDBModel.Shoes" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Users" Width="1.5" PointX="7.875" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Users" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__PickUpPo__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__UserID__440B1D61" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WebStoreDBModel.Items" Width="1.5" PointX="0.5" PointY="0.625" />
