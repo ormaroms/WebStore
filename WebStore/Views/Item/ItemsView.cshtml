@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebStore.Models.Item>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().Contains("Wo"))
+            {
+                <li>@Html.ActionLink("All", "AllWomenItems", "Item")</li>
+                <li>@Html.ActionLink("Shoes", "GetWomenShoes", "Item")</li>
+                <li>@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>
+                @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
+            "active" : "")">@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>*@
+                <li>@Html.ActionLink("Shirts", "GetWomenShirts", "Item")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("All", "AllMenItems", "Item")</li>
+                <li>@Html.ActionLink("Shoes", "GetMenShoes", "Item")</li>
+                <li>@Html.ActionLink("Pants", "GetMenPants", "Item")</li>
+                @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
+            "active" : "")">@Html.ActionLink("Pants", "GetMenPants", "Item")</li>*@
+                @* ליצור לזה מה שצריךךךך אין לנו כוח *@
+                <li>@Html.ActionLink("Shirts", "GetMenShirts", "Item")</li>
+            }
+        </ul>
+            </div>
+        </nav>
+
+        <div class="displayRow">
+            @foreach (var item in Model)
+            {
+                <div class="displayCol">
+                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+                    <p> @item.Price ₪</p>
+                </div>
+            }
+        </div>
+

@@ -199,8 +199,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ManController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Data\Items.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
@@ -248,9 +248,6 @@
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PickUpPoint.cs" />
-    <Compile Include="Models\Shirt.cs" />
-    <Compile Include="Models\Shoes.cs" />
-    <Compile Include="Models\Pants.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WebStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -331,6 +328,7 @@
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Graph\Graph.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Item\ItemsView.cshtml" />
     <None Include="Views\Map\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -366,8 +364,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Man\Shoes.cshtml" />
-    <Content Include="Views\Man\Pants.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

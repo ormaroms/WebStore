@@ -21,7 +21,7 @@ namespace WebStore.Controllers
         public string GetData()
         {
             var results = db.Orders
-        .Join(db.Item,
+        .Join(db.Items,
         o => o.ItemID,
         i => i.ItemID,
         (o, i) => new
