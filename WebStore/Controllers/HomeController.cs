@@ -9,7 +9,6 @@ namespace WebStore.Controllers
 {
     public class HomeController : Controller
     {
-		private WebStoreContext db = new WebStoreContext();
 
 		public ActionResult Index()
         {
@@ -33,5 +32,5 @@ namespace WebStore.Controllers
 		public ActionResult Info() {
 			return View();
 		}
-	}
+    }
 }

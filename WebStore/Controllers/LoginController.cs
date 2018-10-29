@@ -86,5 +86,14 @@ namespace WebStore.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace WebStore.Controllers
 {
     public class MapController : Controller
     {
+        private WebStoreContext db = new WebStoreContext();
 
         public ActionResult Index()
         {
@@ -27,6 +28,15 @@ namespace WebStore.Controllers
             }
 
             return JsonConvert.SerializeObject(pickUpPointsJson);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
