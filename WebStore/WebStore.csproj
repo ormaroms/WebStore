@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\Items.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
@@ -211,16 +212,7 @@
     <Compile Include="Data\Orders.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Pants.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\PickUpPoints.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Shirts.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Shoes.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Users.cs">
@@ -364,6 +356,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Users\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

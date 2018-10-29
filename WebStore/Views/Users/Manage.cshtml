@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebStore.Models.User>
+@{
+    ViewBag.Title = "Manage";
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#saveBtn').on('click', function () {
+                var userId = $('#userIdInput').val();
+                var userName = $('#userNameInput').val();
+                var password = $('#passwordInput').val();
+                var isAdmin = $('#isAdminInput').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Users/Save',
+                    data: {
+                        userId: userId,
+                        userName: userName,
+                        password: password,
+                        isAdmin: isAdmin
+                    }
+                });
+            });
+
+            $('#deleteBtn').on('click', function () {
+                var userId = $('#userIdInput').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Users/Delete',
+                    data: {
+                        userId: userId
+                    },
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+
+    </script>
+}
+
+<h2>Manage</h2>
+
+<p>
+    @Html.ActionLink("Add new user", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(user => user.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(user => user.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(user => user.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(user => user.IsAdmin)
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+
+            <tr>
+                <td>
+                    @Html.TextBoxFor(userModel => user.UserID, new { id = "userIdInput", disabled = true })
+                </td>
+                <td>
+                    @Html.TextBoxFor(userModel => user.UserName, new { id = "userNameInput" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(userModel => user.Password, new { id = "passwordInput" })
+                </td>
+                <td>
+                    @Html.CheckBoxFor(userModel => user.IsAdmin, new { id = "isAdminInput" })
+                </td>
+                <td>
+                    <button id="saveBtn" class="btn btn-success">Save</button>
+                    <button id="deleteBtn" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+
+    }
+</table>
