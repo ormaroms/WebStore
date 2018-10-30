@@ -8,6 +8,19 @@ namespace WebStore.Models
 {
     public class User
     {
+        public User ( string userName, string password, bool isAdmin)
+        {
+            this.UserName = userName;
+            this.Password = password;
+            this.IsAdmin = isAdmin;
+            this.IsDeleted = false;
+        }
+
+        public User()
+        {
+
+        }
+
         [Key]
         public int UserID { get; set; }
         public string UserName { get; set; }

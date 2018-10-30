@@ -1,37 +1,51 @@
 ﻿@model IEnumerable<WebStore.Models.User>
-@{
-    ViewBag.Title = "Manage";
-}
+
 
 @section Scripts {
     <script type="text/javascript">
+        function updateBtnClicked(userId) {
+            var userName = $('#userNameInput' + userId).val();
+            var password = $('#passwordInput' + userId).val();
+            var isAdmin = $('#isAdminInput' + userId).prop('checked');
+
+            $.ajax({
+                type: "POST",
+                url: '/Users/Update',
+                data: {
+                    userId: userId,
+                    userName: userName,
+                    password: password,
+                    isAdmin: isAdmin
+                }
+            });
+        }
+
+        function deleteBtnClicked(userId) {
+            $.ajax({
+                type: "POST",
+                url: '/Users/Delete',
+                data: {
+                    userId: userId
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+
         $(document).ready(function () {
-            $('#saveBtn').on('click', function () {
-                var userId = $('#userIdInput').val();
-                var userName = $('#userNameInput').val();
-                var password = $('#passwordInput').val();
-                var isAdmin = $('#isAdminInput').val();
+            $('#newUserBtn').on('click', function () {
+                var userName = $('#newUserNameInput').val();
+                var password = $('#newUserPasswordInput').val();
+                var isAdmin = $('#newUserIsAdminInput').prop('checked');
 
                 $.ajax({
                     type: "POST",
-                    url: '/Users/Save',
+                    url: '/Users/Create',
                     data: {
-                        userId: userId,
                         userName: userName,
                         password: password,
                         isAdmin: isAdmin
-                    }
-                });
-            });
-
-            $('#deleteBtn').on('click', function () {
-                var userId = $('#userIdInput').val();
-
-                $.ajax({
-                    type: "POST",
-                    url: '/Users/Delete',
-                    data: {
-                        userId: userId
                     },
                     success: function () {
                         window.location.reload();
@@ -43,11 +57,6 @@
     </script>
 }
 
-<h2>Manage</h2>
-
-<p>
-    @Html.ActionLink("Add new user", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -67,24 +76,41 @@
     @foreach (var user in Model)
     {
 
-            <tr>
-                <td>
-                    @Html.TextBoxFor(userModel => user.UserID, new { id = "userIdInput", disabled = true })
-                </td>
-                <td>
-                    @Html.TextBoxFor(userModel => user.UserName, new { id = "userNameInput" })
-                </td>
-                <td>
-                    @Html.TextBoxFor(userModel => user.Password, new { id = "passwordInput" })
-                </td>
-                <td>
-                    @Html.CheckBoxFor(userModel => user.IsAdmin, new { id = "isAdminInput" })
-                </td>
-                <td>
-                    <button id="saveBtn" class="btn btn-success">Save</button>
-                    <button id="deleteBtn" class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(userModel => user.UserID, new { id = "userIdInput", disabled = true })
+            </td>
+            <td>
+                @Html.TextBoxFor(userModel => user.UserName, new { id = "userNameInput" + user.UserID })
+            </td>
+            <td>
+                @Html.TextBoxFor(userModel => user.Password, new { id = "passwordInput" + user.UserID })
+            </td>
+            <td>
+                @Html.CheckBoxFor(userModel => user.IsAdmin, new { id = "isAdminInput" + user.UserID })
+            </td>
+            <td>
+                <button class="btn btn-success" onclick="updateBtnClicked(@user.UserID)">Save</button>
+                <button class="btn btn-danger" onclick="deleteBtnClicked(@user.UserID)">Delete</button>
+            </td>
+        </tr>
 
     }
+    <tr>
+        <td>
+            Create new user with generated id
+        </td>
+        <td>
+            <input type="text" placeholder="Enter new user name" id="newUserNameInput" />
+        </td>
+        <td>
+            <input type="text" placeholder="Enter new user password" id="newUserPasswordInput" />
+        </td>
+        <td>
+            <input type="checkbox" id="newUserIsAdminInput" />
+        </td>
+        <td>
+            <button id="newUserBtn" class="btn btn-success">Create new user</button>
+        </td>
+    </tr>
 </table>

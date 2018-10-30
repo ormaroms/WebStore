@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebStore.Models;
-using WebStore.ViewModels;
 
 namespace WebStore.Controllers
 {
@@ -27,34 +26,26 @@ namespace WebStore.Controllers
             }
         }
 
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(string userName, string password)
         {
-            if (ModelState.IsValid)
-            {
-                var user = db.Users.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
+            var user = db.Users.Where(x => x.UserName == userName && x.Password == password).FirstOrDefault();
 
-                if (user != null)
-                {
-                    SignIn(model.UserName, user.IsAdmin);
-                    return RedirectToLocal(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
-                }
+            if (user != null)
+            {
+                SignIn(userName, user.IsAdmin);
+                return Json(new { Success = true });
+            }
+            else
+            {
+                return new HttpStatusCodeResult(410, "Unable to find user.");
             }
 
-            return View(model);
         }
 
         [HttpGet]
@@ -73,18 +64,6 @@ namespace WebStore.Controllers
             var id = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
 
             AuthenticationManager.SignIn(id);
-        }
-
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
 
         protected override void Dispose(bool disposing)

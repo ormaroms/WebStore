@@ -17,7 +17,7 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(string userId, string userName, string password, string isAdmin)
+        public ActionResult Update(string userId, string userName, string password, string isAdmin)
         {
             User user = db.Users.Find(int.Parse(userId));
             user.UserName = userName;
@@ -32,6 +32,15 @@ namespace WebStore.Controllers
         {
             User user = db.Users.Find(int.Parse(userId));
             user.IsDeleted = true;
+            db.SaveChanges();
+            return Json(new { Success = true });
+        }
+
+        [HttpPost]
+        public ActionResult Create( string userName, string password, string isAdmin)
+        {
+            User user = new User( userName, password, bool.Parse(isAdmin));
+            db.Users.Add(user);
             db.SaveChanges();
             return Json(new { Success = true });
         }
