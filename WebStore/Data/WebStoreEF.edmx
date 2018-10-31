@@ -43,12 +43,13 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="LocationLongitude " Type="float" Nullable="false" />
           <Property Name="LocationLatitude " Type="float" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
@@ -78,7 +79,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__UserID__571DF1D5">
+        <Association Name="FK__Orders__UserID__503BEA1C">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +105,7 @@
             <End Role="PickUpPoints" EntitySet="PickUpPoints" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__UserID__571DF1D5" Association="Self.FK__Orders__UserID__571DF1D5">
+          <AssociationSet Name="FK__Orders__UserID__503BEA1C" Association="Self.FK__Orders__UserID__503BEA1C">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -136,6 +137,7 @@
           <Property Name="LocationLongitude_" Type="Double" Nullable="false" />
           <Property Name="LocationLatitude_" Type="Double" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__PickUpPo__4316F928" FromRole="PickUpPoints" ToRole="Orders" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -261,6 +263,7 @@
           <EntitySetMapping Name="PickUpPoints">
             <EntityTypeMapping TypeName="WebStoreDBModel.PickUpPoints">
               <MappingFragment StoreEntitySet="PickUpPoints">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LocationLongitude_" ColumnName="LocationLongitude " />

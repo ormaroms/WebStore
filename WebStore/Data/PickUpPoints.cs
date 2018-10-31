@@ -24,6 +24,7 @@ namespace WebStore.Data
         public string Name { get; set; }
         public double LocationLongitude_ { get; set; }
         public double LocationLatitude_ { get; set; }
+        public bool isDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }

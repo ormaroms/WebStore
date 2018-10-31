@@ -65,6 +65,8 @@
                 {
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
                     "active" : "")">@Html.ActionLink("Manage users", "Index", "Users")</li>
+                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManagePickUpPoints" ?
+                    "active" : "")">@Html.ActionLink("Manage pickUpPoints", "Index", "PickUpPoints")</li>
                 }
 
                 </ul>

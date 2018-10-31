@@ -4,9 +4,9 @@
 @section Scripts {
     <script type="text/javascript">
         function updateBtnClicked(userId) {
-            var userName = $('#userNameInput' + userId).val();
-            var password = $('#passwordInput' + userId).val();
-            var isAdmin = $('#isAdminInput' + userId).prop('checked');
+            var userName = $('#userNameInput-' + userId).val();
+            var password = $('#passwordInput-' + userId).val();
+            var isAdmin = $('#isAdminInput-' + userId).prop('checked');
 
             $.ajax({
                 type: "POST",
@@ -60,16 +60,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(user => user.UserID)
+            UserID
         </th>
         <th>
-            @Html.DisplayNameFor(user => user.UserName)
+            UserName
         </th>
         <th>
-            @Html.DisplayNameFor(user => user.Password)
+            Password
         </th>
         <th>
-            @Html.DisplayNameFor(user => user.IsAdmin)
+            IsAdmin
         </th>
         <th>Actions</th>
     </tr>
@@ -78,16 +78,16 @@
 
         <tr>
             <td>
-                @Html.TextBoxFor(userModel => user.UserID, new { id = "userIdInput", disabled = true })
+                <input type="text" value="@(user.UserID)" disabled id="userIdInput-@(user.UserID)" />
             </td>
             <td>
-                @Html.TextBoxFor(userModel => user.UserName, new { id = "userNameInput" + user.UserID })
+                <input type="text" value="@(user.UserName)" id="userNameInput-@(user.UserID)" />
             </td>
             <td>
-                @Html.TextBoxFor(userModel => user.Password, new { id = "passwordInput" + user.UserID })
+                <input type="text" value="@(user.Password)" id="passwordInput-@(user.UserID)" />
             </td>
             <td>
-                @Html.CheckBoxFor(userModel => user.IsAdmin, new { id = "isAdminInput" + user.UserID })
+                <input type="checkbox" checked="@(user.IsAdmin)" id="isAdminInput-@(user.UserID)" />
             </td>
             <td>
                 <button class="btn btn-success" onclick="updateBtnClicked(@user.UserID)">Save</button>

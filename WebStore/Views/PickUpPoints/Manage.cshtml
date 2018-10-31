@@ -1,0 +1,121 @@
+﻿@model IEnumerable<WebStore.Models.PickUpPoint>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function updateBtnClicked(id) {
+            var id = $('#idInput-' + id).val();
+            var name = $('#nameInput-' + id).val();
+            var locationLongitude = $('#locationLongitudeInput-' + id).val();
+            var locationLatitude = $('#locationLatitudeInput-' + id).val();
+
+
+            $.ajax({
+                type: "POST",
+                url: '/PickUpPoints/Update',
+                data: {
+                    id: id,
+                    name: name,
+                    locationLongitude: locationLongitude,
+                    locationLatitude: locationLatitude
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+
+        function deleteBtnClicked(id) {
+            $.ajax({
+                type: "POST",
+                url: '/PickUpPoints/Delete',
+                data: {
+                    id: id
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#newPickUpBtn').on('click', function () {
+                var name = $('#newNameInput').val();
+                var locationLongitude = $('#newLocationLongitudeInput').val();
+                var locationLatitude = $('#newLocationLatitudeInput').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '/PickUpPoints/Create',
+                    data: {
+                        name: name,
+                        locationLongitude: locationLongitude,
+                        locationLatitude: locationLatitude
+                    },
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+
+    </script>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            LocationLongitude
+        </th>
+        <th>
+            LocationLatitude
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var pickUpPoint in Model)
+    {
+
+        <tr>
+            <td>
+               <input type="text" value="@(pickUpPoint.ID)" disabled id="idInput-@(pickUpPoint.ID)" />
+            </td>
+            <td>
+                <input type="text" value="@(pickUpPoint.Name)"  id="nameInput-@(pickUpPoint.ID)" />
+            </td>
+            <td>
+                <input type="number" value="@(pickUpPoint.LocationLongitude)"  id="locationLongitudeInput-@(pickUpPoint.ID)" />
+            </td>
+            <td>
+                <input type="number" value="@(pickUpPoint.LocationLatitude)"  id="locationLatitudeInput-@(pickUpPoint.ID)" />
+            </td>
+            <td>
+                <button class="btn btn-success" onclick="updateBtnClicked(@pickUpPoint.ID)">Save</button>
+                <button class="btn btn-danger" onclick="deleteBtnClicked(@pickUpPoint.ID)">Delete</button>
+            </td>
+        </tr>
+
+    }
+    <tr>
+        <td>
+            Create new picUpPoint with generated id
+        </td>
+        <td>
+            <input type="text" placeholder="Enter new pickUpPoint name" id="newNameInput" />
+        </td>
+        <td>
+            <input type="number" placeholder="Enter new pickUpPoint locationLongitude" id="newLocationLongitudeInput" />
+        </td>
+        <td>
+            <input type="number" placeholder="Enter new pickUpPoint LocationLatitude" id="newLocationLatitudeInput" />
+        </td>
+        <td>
+            <button id="newPickUpBtn" class="btn btn-success">Create new PicUpPoint</button>
+        </td>
+    </tr>
+</table>
