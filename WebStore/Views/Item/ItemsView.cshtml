@@ -2,6 +2,24 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section Scripts {
+    <script type="text/javascript">
+    function addToCart(item, actionName) {
+        $.ajax({
+            type: "POST",
+            url: '/Item/AddItem',
+            data: {
+                item,
+                actionName: actionName
+            },
+            success: function () {
+                window.location.reload();
+            }
+        });
+    }
+    </script>
+}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
@@ -11,7 +29,7 @@
                 <li>@Html.ActionLink("Shoes", "GetWomenShoes", "Item")</li>
                 <li>@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>
                 @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
-            "active" : "")">@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>*@
+                    "active" : "")">@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>*@
                 <li>@Html.ActionLink("Shirts", "GetWomenShirts", "Item")</li>
             }
             else
@@ -20,21 +38,25 @@
                 <li>@Html.ActionLink("Shoes", "GetMenShoes", "Item")</li>
                 <li>@Html.ActionLink("Pants", "GetMenPants", "Item")</li>
                 @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
-            "active" : "")">@Html.ActionLink("Pants", "GetMenPants", "Item")</li>*@
+                    "active" : "")">@Html.ActionLink("Pants", "GetMenPants", "Item")</li>*@
                 @* ליצור לזה מה שצריךךךך אין לנו כוח *@
                 <li>@Html.ActionLink("Shirts", "GetMenShirts", "Item")</li>
             }
         </ul>
-            </div>
-        </nav>
+    </div>
+</nav>
 
-        <div class="displayRow">
-            @foreach (var item in Model)
-            {
-                <div class="displayCol">
-                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
-                    <p> @item.Price ₪</p>
-                </div>
-            }
+<div class="displayRow">
+    @foreach (var item in Model)
+    {
+        <div class="displayCol">
+            <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+            <p> @item.Price ₪</p>
+            @*<a href='@Html.Action("AddItem", "Item", item))'>*@
+            <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
         </div>
+    }
+</div>
 

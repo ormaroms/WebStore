@@ -30,7 +30,9 @@
                 <a href='@Url.Action("Graph", "Graph")'>
                     <i class="glyphicon glyphicon-stats icon"></i>
                 </a>
-                <i class="glyphicon glyphicon-shopping-cart icon"></i>
+                <a href='@Url.Action("Index", "Order")'>
+                    <i class="glyphicon glyphicon-shopping-cart icon"></i>
+                </a>
 
                 @if (Request.IsAuthenticated)
                 {

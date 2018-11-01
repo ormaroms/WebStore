@@ -11,89 +11,105 @@ namespace WebStore.Controllers
     {
         private WebStoreContext db = new WebStoreContext();
 
+        [HttpPost]
+        public ActionResult AddItem(Item item, string actionName)
+        {
+            if (Session["UserOrder"] != null)
+            {
+                List<Item> myOrders = (List<Item>)Session["UserOrder"];
+                myOrders.Add(item);
+                Session["UserOrder"] = myOrders;
+            }
+            else
+            {
+                Session["UserOrder"] = new List<Item> { item };
+            }
+            return RedirectToAction(actionName);
+        }
+
         public ActionResult AllMenItems()
         {
-                var allItems = db.Items.Where(x => x.Gender == "Men");
- //               GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
+            var allItems = db.Items.Where(x => x.Gender == "Men");
+            //               GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
 
-                return View("ItemsView",allItems.ToList()); 
+            return View("ItemsView", allItems.ToList());
         }
 
         public ActionResult AllWomenItems()
         {
-                var allItems = db.Items.Where(x => x.Gender == "Women");
+            var allItems = db.Items.Where(x => x.Gender == "Women");
 
-                return View("ItemsView", allItems.ToList());
+            return View("ItemsView", allItems.ToList());
         }
 
         public ActionResult AllItems()
         {
-                var allItems = db.Items;
+            var allItems = db.Items;
 
-                return View("ItemsView", allItems.ToList());
+            return View("ItemsView", allItems.ToList());
         }
 
         public ActionResult AllPantsItems()
         {
-                var allPants = db.Items.Where(x => x.ItemTypeId == 1);
+            var allPants = db.Items.Where(x => x.ItemTypeId == 1);
 
-                return View("ItemsView", allPants.ToList());
+            return View("ItemsView", allPants.ToList());
         }
 
         public ActionResult AllShoesItems()
         {
-                var allShoes = db.Items.Where(x => x.ItemTypeId == 2);
+            var allShoes = db.Items.Where(x => x.ItemTypeId == 2);
 
-                return View("ItemsView", allShoes.ToList());
+            return View("ItemsView", allShoes.ToList());
         }
 
         public ActionResult AllShirtsItems()
         {
-                var allShirts = db.Items.Where(x => x.ItemTypeId == 3);
+            var allShirts = db.Items.Where(x => x.ItemTypeId == 3);
 
-                return View("ItemsView", allShirts.ToList());
+            return View("ItemsView", allShirts.ToList());
         }
 
         public ActionResult GetMenPants()
         {
-                var allManPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 1);
+            var allManPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 1);
 
-                return View("ItemsView", allManPants.ToList());
+            return View("ItemsView", allManPants.ToList());
         }
 
         public ActionResult GetWomenPants()
         {
-                var allManPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 1);
+            var allManPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 1);
 
-                return View("ItemsView", allManPants.ToList());
+            return View("ItemsView", allManPants.ToList());
         }
 
         public ActionResult GetWomenShoes()
         {
-                var allWomenPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 2);
+            var allWomenPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 2);
 
-                return View("ItemsView", allWomenPants.ToList());
+            return View("ItemsView", allWomenPants.ToList());
         }
 
         public ActionResult GetMenShoes()
         {
-                var allMenPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 2);
+            var allMenPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 2);
 
-                return View("ItemsView", allMenPants.ToList());
+            return View("ItemsView", allMenPants.ToList());
         }
 
         public ActionResult GetWomenShirts()
         {
-                var allWomenShirts = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 3);
+            var allWomenShirts = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 3);
 
-                return View("ItemsView", allWomenShirts.ToList());
+            return View("ItemsView", allWomenShirts.ToList());
         }
 
         public ActionResult GetMenShirts()
         {
-                var allMenShirts = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 3);
+            var allMenShirts = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 3);
 
-                return View("ItemsView", allMenShirts.ToList());
+            return View("ItemsView", allMenShirts.ToList());
         }
 
         protected override void Dispose(bool disposing)
