@@ -113,3 +113,30 @@ textarea {
 	color: white;
 	cursor: pointer;
 }
+
+.loginText {
+    font-family: "futura-pt",Tahoma,Geneva,Verdana,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+.loginInput {
+    margin-left: 13%;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    height: 40px;
+}
+
+.loginContainer {
+    margin-left:40%;
+}
+
+#loginBtn {
+    margin-left:44%;
+}

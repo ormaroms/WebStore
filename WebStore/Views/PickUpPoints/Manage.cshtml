@@ -8,22 +8,26 @@
             var name = $('#nameInput-' + id).val();
             var locationLongitude = $('#locationLongitudeInput-' + id).val();
             var locationLatitude = $('#locationLatitudeInput-' + id).val();
-
-
-            $.ajax({
-                type: "POST",
-                url: '/PickUpPoints/Update',
-                data: {
-                    id: id,
-                    name: name,
-                    locationLongitude: locationLongitude,
-                    locationLatitude: locationLatitude
-                },
-                success: function () {
-                    window.location.reload();
-                }
-            });
+            if (name == '' || locationLongitude == '' || locationLongitude == '' || locationLatitude == '') {
+                alert("Not a valid pickUppoint!");
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: '/PickUpPoints/Update',
+                    data: {
+                        id: id,
+                        name: name,
+                        locationLongitude: locationLongitude,
+                        locationLatitude: locationLatitude
+                    },
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            }
         }
+
 
         function deleteBtnClicked(id) {
             $.ajax({
@@ -44,18 +48,23 @@
                 var locationLongitude = $('#newLocationLongitudeInput').val();
                 var locationLatitude = $('#newLocationLatitudeInput').val();
 
-                $.ajax({
-                    type: "POST",
-                    url: '/PickUpPoints/Create',
-                    data: {
-                        name: name,
-                        locationLongitude: locationLongitude,
-                        locationLatitude: locationLatitude
-                    },
-                    success: function () {
-                        window.location.reload();
-                    }
-                });
+                if (!name || !locationLatitude || !locationLongitude) {
+                    alert("Not a valid pickUppoint!");
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: '/PickUpPoints/Create',
+                        data: {
+                            name: name,
+                            locationLongitude: locationLongitude,
+                            locationLatitude: locationLatitude
+                        },
+                        success: function () {
+                            window.location.reload();
+                        }
+                    });
+                }
             });
         });
 
@@ -83,16 +92,16 @@
 
         <tr>
             <td>
-               <input type="text" value="@(pickUpPoint.ID)" disabled id="idInput-@(pickUpPoint.ID)" />
+                <input type="text" value="@(pickUpPoint.ID)" disabled id="idInput-@(pickUpPoint.ID)" />
             </td>
             <td>
-                <input type="text" value="@(pickUpPoint.Name)"  id="nameInput-@(pickUpPoint.ID)" />
+                <input type="text" value="@(pickUpPoint.Name)" id="nameInput-@(pickUpPoint.ID)" />
             </td>
             <td>
-                <input type="number" value="@(pickUpPoint.LocationLongitude)"  id="locationLongitudeInput-@(pickUpPoint.ID)" />
+                <input type="number" value="@(pickUpPoint.LocationLongitude)" id="locationLongitudeInput-@(pickUpPoint.ID)" />
             </td>
             <td>
-                <input type="number" value="@(pickUpPoint.LocationLatitude)"  id="locationLatitudeInput-@(pickUpPoint.ID)" />
+                <input type="number" value="@(pickUpPoint.LocationLatitude)" id="locationLatitudeInput-@(pickUpPoint.ID)" />
             </td>
             <td>
                 <button class="btn btn-success" onclick="updateBtnClicked(@pickUpPoint.ID)">Save</button>

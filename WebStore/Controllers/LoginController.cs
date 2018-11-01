@@ -60,6 +60,7 @@ namespace WebStore.Controllers
         {
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, userName));
+
             claims.Add(new Claim(ClaimTypes.Role, isAdmin ? "admin" : "user"));
             var id = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
 
