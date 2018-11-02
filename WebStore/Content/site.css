@@ -141,3 +141,36 @@ textarea {
     margin-left:44%;
 }
 
+.createItemContainer {
+    margin-left: 45%;
+}
+
+.createItemText {
+    font-family: "futura-pt",Tahoma,Geneva,Verdana,Arial,sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.3px;
+
+}
+
+.itemTypeDiv {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.createItemInput {
+    margin-bottom: 7px;
+}
+
+.createItemImgDiv {
+    margin-bottom:7px;
+}
+
+#createItemBtn{
+    margin-left:16%;
+}
