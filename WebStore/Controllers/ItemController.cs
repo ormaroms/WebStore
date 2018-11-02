@@ -27,92 +27,104 @@ namespace WebStore.Controllers
             return RedirectToAction(actionName);
         }
 
-        public ActionResult AllMenItems()
-        {
-            var allItems = db.Items.Where(x => x.Gender == "Men");
-            //               GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
+		public ActionResult AllMenItems(string brand, int? minPrice, int? maxPrice)
+		{
+			return View("ItemsView", FilterData("Men", null, brand, minPrice, maxPrice));
 
-            return View("ItemsView", allItems.ToList());
-        }
+			//               var allItems = db.Items.Where(x => x.Gender == "Men");
+			////               GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
 
-        public ActionResult AllWomenItems()
-        {
-            var allItems = db.Items.Where(x => x.Gender == "Women");
+			//               return View("ItemsView",allItems.ToList()); 
+		}
 
-            return View("ItemsView", allItems.ToList());
-        }
+		public ActionResult AllWomenItems(string brand, int? minPrice, int? maxPrice)
+		{
+			return View("ItemsView", FilterData("Women", null, brand, minPrice, maxPrice));
+		}
 
-        public ActionResult AllItems()
-        {
-            var allItems = db.Items;
+		public ActionResult AllItems(string brand, int? minPrice, int? maxPrice)
+		{
+			return View("ItemsView", FilterData(null, null, brand, minPrice, maxPrice));
+		}
 
-            return View("ItemsView", allItems.ToList());
-        }
+		public ActionResult AllPantsItems(string brand, int? minPrice, int? maxPrice)
+		{
+			return View("ItemsView", FilterData(null, 1, brand, minPrice, maxPrice));
+		}
 
-        public ActionResult AllPantsItems()
-        {
-            var allPants = db.Items.Where(x => x.ItemTypeId == 1);
+		public ActionResult AllShoesItems(string brand, int? minPrice, int? maxPrice)
+		{ 
+			return View("ItemsView", FilterData(null, 2, brand, minPrice, maxPrice));
+		}
 
-            return View("ItemsView", allPants.ToList());
-        }
+	public ActionResult AllShirtsItems(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData(null, 3, brand, minPrice, maxPrice));
+	}
 
-        public ActionResult AllShoesItems()
-        {
-            var allShoes = db.Items.Where(x => x.ItemTypeId == 2);
+	public ActionResult GetMenPants(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Men", 1, brand, minPrice, maxPrice));
+	}
 
-            return View("ItemsView", allShoes.ToList());
-        }
+	public ActionResult GetWomenPants(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Women", 1, brand, minPrice, maxPrice));
+	}
 
-        public ActionResult AllShirtsItems()
-        {
-            var allShirts = db.Items.Where(x => x.ItemTypeId == 3);
+	public ActionResult GetWomenShoes(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Women", 2, brand, minPrice, maxPrice));
+	}
 
-            return View("ItemsView", allShirts.ToList());
-        }
+	public ActionResult GetMenShoes(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Men", 2, brand, minPrice, maxPrice));
+	}
 
-        public ActionResult GetMenPants()
-        {
-            var allManPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 1);
+	public ActionResult GetWomenShirts(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Women", 3, brand, minPrice, maxPrice));
+	}
 
-            return View("ItemsView", allManPants.ToList());
-        }
+	public ActionResult GetMenShirts(string brand, int? minPrice, int? maxPrice)
+	{
+		return View("ItemsView", FilterData("Men", 3, brand, minPrice, maxPrice));
+	}
 
-        public ActionResult GetWomenPants()
-        {
-            var allManPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 1);
+	private List<Item> FilterData(string gender, int? itemType, string brand, int? minPrice, int? maxPrice)
+	{
+		var allItems = db.Items.Where(x => true);
+		if (gender != null)
+		{
+			allItems = allItems.Where(x => x.Gender == gender);
+		}
 
-            return View("ItemsView", allManPants.ToList());
-        }
+		if (itemType.HasValue)
+		{
+			allItems = allItems.Where(x => x.ItemTypeId == itemType);
+		}
 
-        public ActionResult GetWomenShoes()
-        {
-            var allWomenPants = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 2);
+		if (brand != null)
+		{
+			allItems = allItems.Where(x => x.Brand.Contains(brand));
+		}
 
-            return View("ItemsView", allWomenPants.ToList());
-        }
+		if (minPrice.HasValue)
+		{
+			allItems = allItems.Where(x => x.Price > minPrice);
+		}
 
-        public ActionResult GetMenShoes()
-        {
-            var allMenPants = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 2);
+		if (maxPrice.HasValue)
+		{
+			allItems = allItems.Where(x => x.Price < maxPrice);
+		}
 
-            return View("ItemsView", allMenPants.ToList());
-        }
+		return allItems.ToList();
+	}
 
-        public ActionResult GetWomenShirts()
-        {
-            var allWomenShirts = db.Items.Where(x => x.Gender == "Women" && x.ItemTypeId == 3);
 
-            return View("ItemsView", allWomenShirts.ToList());
-        }
-
-        public ActionResult GetMenShirts()
-        {
-            var allMenShirts = db.Items.Where(x => x.Gender == "Men" && x.ItemTypeId == 3);
-
-            return View("ItemsView", allMenShirts.ToList());
-        }
-
-        protected override void Dispose(bool disposing)
+	protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

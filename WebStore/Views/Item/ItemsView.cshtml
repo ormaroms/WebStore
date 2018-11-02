@@ -46,12 +46,35 @@
     </div>
 </nav>
 
+<section id="filterBox" style="padding-bottom: 50px;">
+	@using (Html.BeginForm(HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString(), "Item", FormMethod.Get))
+	{
+		<div class="form-group">
+			<label class="col-md-1 control-label" for="flowerName">Brand:</label>
+			<div class="col-md-2">
+				<input class="form-control" name="brand" id="brand" type="text" />
+			</div>
+			<label class="col-md-1 control-label" for="flowerName">Min Price:</label>
+			<div class="col-md-2">
+				<input class="form-control" name="minPrice" id="minPrice" type="number" />
+			</div>
+			<label class="col-md-1 control-label" for="flowerName">Max Price:</label>
+			<div class="col-md-2">
+				<input class="form-control" name="maxPrice" id="maxPrice" type="number" />
+			</div>
+		</div>
+
+		<input class="col-md-3" type="submit" style="width: 100px;" value="Filter" />
+	}
+</section>
+
 <div class="displayRow">
     @foreach (var item in Model)
     {
         <div class="displayCol">
             <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
             <p> @item.Price ₪</p>
+			<p> @item.Brand </p>
             @*<a href='@Html.Action("AddItem", "Item", item))'>*@
             <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
                 <i class="glyphicon glyphicon-plus"></i>
