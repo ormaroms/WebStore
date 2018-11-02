@@ -44,5 +44,14 @@ namespace WebStore.Controllers
             db.SaveChanges();
             return Json(new { Success = true });
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

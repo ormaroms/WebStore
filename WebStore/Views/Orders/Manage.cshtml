@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebStore.Models.Order>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function deleteBtnClicked(orderId, itemId) {
+            $.ajax({
+                type: "POST",
+                url: '/Orders/Delete',
+                data: {
+                    orderId: orderId,
+                    itemId: itemId
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+
+    </script>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            UserId
+        </th>
+        <th>
+            ItemId
+        </th>
+        <th>
+            PickUpPointID
+        </th>
+        <th>OrderDate</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+
+        <tr>
+            <td>
+                <input type="text" value="@(order.OrderID)" disabled  />
+            </td>
+            <td>
+                <input type="text" value="@(order.UserID)" disabled />
+            </td>
+            <td>
+                <input type="text" value="@(order.ItemID)" disabled />
+            </td>
+            <td>
+                <input type="text" value="@(order.PickUpPointID)" disabled/>
+            </td>
+            <td>
+                <input type="text" value="@(order.OrderDate)" disabled/>
+            </td>
+            <td>
+                <button class="btn btn-danger" onclick="deleteBtnClicked(@order.OrderID, @(order.ItemID))">Delete</button>
+            </td>
+        </tr>
+
+    }
+</table>

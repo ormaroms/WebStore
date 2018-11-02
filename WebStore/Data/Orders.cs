@@ -19,6 +19,7 @@ namespace WebStore.Data
         public System.DateTime OrderDate { get; set; }
         public int ItemID { get; set; }
         public int PickUpPointID { get; set; }
+        public bool isDeleted { get; set; }
     
         public virtual PickUpPoints PickUpPoints { get; set; }
         public virtual Users Users { get; set; }

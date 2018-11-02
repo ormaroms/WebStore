@@ -15,6 +15,7 @@ namespace WebStore.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime OrderDate { get; set; }
+        public bool IsDeleted { get; set; }
     }
 } 
  
