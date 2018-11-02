@@ -5,6 +5,22 @@
 
 @section Scripts {
     <script type="text/javascript">
+    function delItem(item, actionName) {
+        var r = confirm("Are you sure you want to delete this item?")
+        if (r == true) {
+            $.ajax({
+                type: "POST",
+                url: '/Item/DelItem',
+                data: {
+                    item,
+                    actionName: actionName
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+    }
     function addToCart(item, actionName) {
         $.ajax({
             type: "POST",
@@ -71,15 +87,21 @@
 <div class="displayRow">
     @foreach (var item in Model)
     {
-        <div class="displayCol">
-            <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
-            <p> @item.Price ₪</p>
-			<p> @item.Brand </p>
-            @*<a href='@Html.Action("AddItem", "Item", item))'>*@
-            <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
-                <i class="glyphicon glyphicon-plus"></i>
+    <div class="displayCol">
+        <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+        <p> @item.Price ₪</p>
+        <p> @item.Brand </p>
+        @*<a href='@Html.Action("AddItem", "Item", item))'>*@
+        <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+            <i class="glyphicon glyphicon-plus"></i>
+        </button>
+        @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
+        {
+            <button class="btn btn-danger" onclick='delItem(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+                X
             </button>
-        </div>
+        }
+    </div>
     }
 </div>
 
