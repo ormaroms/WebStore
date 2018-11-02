@@ -15,7 +15,7 @@ namespace WebStore.Models
         public string Brand { get; set; }
         public string Gender { get; set; }
         public string ImgPath { get; set; }
-
+        public bool IsDeleted { get; set; }
     }
 }
 
