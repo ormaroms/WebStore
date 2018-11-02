@@ -16,6 +16,7 @@
           <Property Name="Brand" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="ImgPath" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemTypes">
           <Key>
@@ -29,11 +30,12 @@
             <PropertyRef Name="OrderID" />
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="ItemID" Type="int" Nullable="false" />
           <Property Name="PickUpPointID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PickUpPoints">
@@ -45,6 +47,12 @@
           <Property Name="LocationLongitude " Type="float" Nullable="false" />
           <Property Name="LocationLatitude " Type="float" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sequences">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -68,7 +76,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__PickUpPo__0A688BB1">
+        <Association Name="FK__Orders__PickUpPo__4589517F">
           <End Role="PickUpPoints" Type="Self.PickUpPoints" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +88,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__UserID__09746778">
+        <Association Name="FK__Orders__UserID__44952D46">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -97,16 +105,17 @@
           <EntitySet Name="ItemTypes" EntityType="Self.ItemTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sequences" EntityType="Self.Sequences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Items__ItemTypeI__01142BA1" Association="Self.FK__Items__ItemTypeI__01142BA1">
             <End Role="ItemTypes" EntitySet="ItemTypes" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__PickUpPo__0A688BB1" Association="Self.FK__Orders__PickUpPo__0A688BB1">
+          <AssociationSet Name="FK__Orders__PickUpPo__4589517F" Association="Self.FK__Orders__PickUpPo__4589517F">
             <End Role="PickUpPoints" EntitySet="PickUpPoints" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__UserID__09746778" Association="Self.FK__Orders__UserID__09746778">
+          <AssociationSet Name="FK__Orders__UserID__44952D46" Association="Self.FK__Orders__UserID__44952D46">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -129,6 +138,7 @@
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__440B1D61" FromRole="Orders" ToRole="Users" />
           <NavigationProperty Name="Items" Relationship="WebStoreDBModel.FK__Orders__ItemID__6E01572D" FromRole="Orders" ToRole="Items" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="PickUpPoints">
           <Key>
@@ -198,6 +208,7 @@
             <End Role="ItemTypes" EntitySet="ItemTypes" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
+          <EntitySet Name="Sequences" EntityType="WebStoreDBModel.Sequence" />
         </EntityContainer>
         <EntityType Name="Items">
           <Key>
@@ -212,6 +223,7 @@
           <Property Name="ImgPath" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="WebStoreDBModel.FK__Orders__ItemID__6E01572D" FromRole="Items" ToRole="Orders" />
           <NavigationProperty Name="ItemTypes" Relationship="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" FromRole="Items" ToRole="ItemTypes" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemTypes">
           <Key>
@@ -245,6 +257,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -254,6 +272,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WebStoreDBModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -288,6 +307,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="WebStoreDBModel.Items">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -303,6 +323,13 @@
               <MappingFragment StoreEntitySet="ItemTypes">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sequences">
+            <EntityTypeMapping TypeName="WebStoreDBModel.Sequence">
+              <MappingFragment StoreEntitySet="Sequences">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

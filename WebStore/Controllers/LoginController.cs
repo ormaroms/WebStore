@@ -39,6 +39,7 @@ namespace WebStore.Controllers
             if (user != null)
             {
                 SignIn(userName, user.IsAdmin);
+				Session["UserID"] = user.UserID;
                 return Json(new { Success = true });
             }
             else

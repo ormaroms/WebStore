@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="WebStoreDBModel.ItemTypes" Width="1.5" PointX="2.25" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__6E01572D" />
         <AssociationConnector Association="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Sequence" Width="1.5" PointX="4.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
