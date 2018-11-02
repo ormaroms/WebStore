@@ -7,7 +7,8 @@ namespace WebStore.Models
     public class Order
     {
         [Key, Column(Order = 0)]
-        public int OrderID { get; set; }
+		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+		public int OrderID { get; set; }
         public int UserID { get; set; }
         [Key, Column(Order = 1)]
         public int ItemID { get; set; }

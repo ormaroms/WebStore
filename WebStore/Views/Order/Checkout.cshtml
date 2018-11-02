@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebStore.Models.PickUpPoint>
+@{
+	ViewBag.Title = "Checkout";
+}
+@section Scripts {
+	<script type="text/javascript">
+		debugger;
+		$(document).ready(function () {
+			debugger;
+			getUserName();
+			getTotalOrderPrice();
+		});
+
+		function getUserName() {
+			$.ajax({
+				type: "POST",
+				url: '/Order/GetUserName',
+				success: function (res) {
+					debugger;
+					$("#userName").html('Hey, ' + res);
+				}
+			});
+		}
+
+		function getTotalOrderPrice {
+			$.ajax({
+				type: "POST",
+				url: '/Order/GetTotalPrice',
+				success: function (res) {
+					debugger;
+					$("#price").html('You\'re total order price is ' + res);
+				}
+			});
+		}
+
+	</script>
+}
+<h2>Checkout</h2>
+
+<div>
+	<h4 id="userName"></h4>
+	<p id="price">Your total order price is: </p>
+
+	<section id="saveOrder">
+		@using (Html.BeginForm("SaveOrder", "Order", FormMethod.Get))
+		{
+			<select name="pickupPoint" id="pickupPoint">
+				@foreach (var point in Model)
+				{
+					<option value="@point.ID">@point.Name</option>
+				}
+			</select>
+
+			<input class="col-md-3" type="submit" style="width: 100px;" value="Filter" />
+		}
+	</section>
+
+
+
+</div>
+

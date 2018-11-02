@@ -30,7 +30,7 @@
             <PropertyRef Name="OrderID" />
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="ItemID" Type="int" Nullable="false" />
@@ -47,6 +47,12 @@
           <Property Name="LocationLongitude " Type="float" Nullable="false" />
           <Property Name="LocationLatitude " Type="float" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sequences">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -70,7 +76,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__PickUpPo__308E3499">
+        <Association Name="FK__Orders__PickUpPo__4589517F">
           <End Role="PickUpPoints" Type="Self.PickUpPoints" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +88,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__UserID__2F9A1060">
+        <Association Name="FK__Orders__UserID__44952D46">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,16 +105,17 @@
           <EntitySet Name="ItemTypes" EntityType="Self.ItemTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PickUpPoints" EntityType="Self.PickUpPoints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sequences" EntityType="Self.Sequences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Items__ItemTypeI__01142BA1" Association="Self.FK__Items__ItemTypeI__01142BA1">
             <End Role="ItemTypes" EntitySet="ItemTypes" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__PickUpPo__308E3499" Association="Self.FK__Orders__PickUpPo__308E3499">
+          <AssociationSet Name="FK__Orders__PickUpPo__4589517F" Association="Self.FK__Orders__PickUpPo__4589517F">
             <End Role="PickUpPoints" EntitySet="PickUpPoints" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__UserID__2F9A1060" Association="Self.FK__Orders__UserID__2F9A1060">
+          <AssociationSet Name="FK__Orders__UserID__44952D46" Association="Self.FK__Orders__UserID__44952D46">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -201,6 +208,7 @@
             <End Role="ItemTypes" EntitySet="ItemTypes" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
+          <EntitySet Name="Sequences" EntityType="WebStoreDBModel.Sequence" />
         </EntityContainer>
         <EntityType Name="Items">
           <Key>
@@ -249,6 +257,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -309,6 +323,13 @@
               <MappingFragment StoreEntitySet="ItemTypes">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sequences">
+            <EntityTypeMapping TypeName="WebStoreDBModel.Sequence">
+              <MappingFragment StoreEntitySet="Sequences">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -89,9 +89,7 @@
     {
     <div class="displayCol">
         <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
-        <p> @item.Price ₪</p>
-        <p> @item.Brand </p>
-        @*<a href='@Html.Action("AddItem", "Item", item))'>*@
+		<p>  @item.Price.ToString("0.00") ₪ | <i class="glyphicon glyphicon-tag"></i> @item.Brand</p>
         <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
             <i class="glyphicon glyphicon-plus"></i>
         </button>

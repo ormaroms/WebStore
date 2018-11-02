@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<WebStore.Models.Item>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    ViewBag.Title = "Index";
-    Session["your_array"] = new double[] { 1.0, 2.0, 3.0 };
+	ViewBag.Title = "Index";
+	Session["your_array"] = new double[] { 1.0, 2.0, 3.0 };
 }
 
 @section Scripts {
-    <script type="text/javascript">
+	<script type="text/javascript">
         function deleteFromCart(itemID, actionName) {
             $.ajax({
                 type: "POST",
@@ -35,14 +35,14 @@
                     counter += element.Price;
                 });
 
-                $('#totalPrice').html(counter.toFixed(2));
+				$('#totalPrice').html(counter.toFixed(2) + '₪');
             }
-        }
-    </script>
+		}
+	</script>
 }
 
 <div style="text-align: center;">
-    <h2>Your Order Cart:</h2>
+	<h2>Your Order Cart:</h2>
 </div>
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -52,71 +52,74 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 
-    <!------ Need TO ADD TO THIS IF WHETER THE LIST IS EMPTY ---------->
-    @if (Session["UserOrder"] == null || Model.Count() == 0)
-    {
-        <h1>Is still empty! Go Shooping </h1>
-    }
-    else
-    {
-        <table id="cart" class="table table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th style="width:50%">Product</th>
-                    <th style="width:8%">Color</th>
-                    <th style="width:10%">Type</th>
-                    <th style="width:22%" class="text-center">Price</th>
-                    <th style="width:10%"></th>
-                </tr>
-            </thead>
-            <div class="displayRow">
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td data-th="Product">
-                                <div class="row">
-                                    <div class="col-sm-2 hidden-xs"><img src="@Url.Content(item.ImgPath)" alt="..." class="img-responsive" /></div>
-                                    <div class="col-sm-10">
-                                        <h4 class="nomargin">@item.Brand</h4>
-                                        <p>Our new collection of @item.Color @item.Brand</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td data-th="Color">@item.Color</td>
-                            <td data-th="Type">@item.Brand</td>
-                            <td data-th="Price" class="text-center">@item.Price</td>
-                            <td class="actions" data-th="">
-                                <button class="btn btn-danger btn-sm" onclick='deleteFromCart("@item.ItemID", "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'><i class="fa fa-trash-o"></i></button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </div>
-            <tfoot>
+	<!------ Need TO ADD TO THIS IF WHETER THE LIST IS EMPTY ---------->
+	@if (Session["UserOrder"] == null || Model.Count() == 0)
+	{
+		<h1>Is still empty! Go Shooping </h1>
+	}
+	else
+	{
+		<table id="cart" class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th style="width:50%">Product</th>
+					<th style="width:10%">Color</th>
+					<th style="width:10%">Type</th>
+					<th style="width:10%">Quantity</th>
+					<th style="width:10%" class="text-center">Price</th>
+					<th style="width:10%"></th>
+				</tr>
+			</thead>
+			<div class="displayRow">
+				<tbody>
+					@foreach (var item in Model.GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault()))
+					{
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><img src="@Url.Content(item.ImgPath)" alt="..." class="img-responsive" /></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin">@item.Brand</h4>
+										<p>Our new collection of @item.Color @item.Brand</p>
+									</div>
+								</div>
+							</td>
+							<td data-th="Color">@item.Color</td>
+							<td data-th="Type">@item.Brand</td>
+							<td data-th="Quantity"> @Model.Count(x => x.ItemID == item.ItemID) </td>
+							<td data-th="Price" class="text-center">@item.Price.ToString("0.00") ₪</td>
+							<td class="actions" data-th="">
+								<button class="btn btn-danger btn-sm" onclick='deleteFromCart("@item.ItemID", "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'><i class="fa fa-trash-o"></i></button>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</div>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><strong>Total </strong></td>
+					<td class="hidden-xs text-center"><strong id="totalPrice">Total </strong></td>
+					<td>
+						<a href='@Url.Action("Checkout", "Order")' class="btn btn-success btn-block">
+							<i class="fa fa-angle-right"></i> Checkout
+						</a>
+					</td>
+				</tr>
 
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total</strong></td>
-                </tr>
-                <tr>
-
-                    <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong id="totalPrice">Total </strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-                </tr>
-
-            </tfoot>
-        </table>
-    }
+			</tfoot>
+		</table>
+	}
 
 
-    @if (Session["UserOrder"] == null || Model.Count() == 0)
-    {
-        <a href='@Url.Action("AllItems", "Item")' class="btn btn-warning"><i class="fa fa-angle-left"></i> Start Shopping</a>
-    }
-    else
-    {
-        <a href='@Url.Action("AllItems", "Item")' class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-    }
+	@if (Session["UserOrder"] == null || Model.Count() == 0)
+	{
+		<a href='@Url.Action("AllItems", "Item")' class="btn btn-warning"><i class="fa fa-angle-left"></i> Start Shopping</a>
+	}
+	else
+	{
+		<a href='@Url.Action("AllItems", "Item")' class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+	}
 </div>
-
