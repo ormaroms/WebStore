@@ -95,7 +95,7 @@
         </button>
         @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
         {
-            <button class="btn btn-danger" onclick='delItem(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+            <button class="btn btn-danger delButton" onclick='delItem(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
                 X
             </button>
         }
