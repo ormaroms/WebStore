@@ -104,6 +104,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -229,21 +230,6 @@
     <Compile Include="Controllers\PickUpPointsController.cs" />
     <Compile Include="Controllers\SuggestedItemsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Data\Items.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ItemTypes.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Orders.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PickUpPoints.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Users.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\WebStoreEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -362,7 +348,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -390,6 +375,8 @@
     <Content Include="Views\Orders\Manage.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\SuggestedItems\SuggestedItems.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\Completed.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

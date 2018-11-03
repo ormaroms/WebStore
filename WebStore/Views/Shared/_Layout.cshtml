@@ -62,13 +62,14 @@
                     "active" : "")">@Html.ActionLink("Man", "AllMenItems", "Item")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "AllWomenItems" ?
                     "active" : "")">@Html.ActionLink("Woman", "AllWomenItems", "Item")</li>
-
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "SuggestedItems" ?
                     "active" : "")">@Html.ActionLink("Recommended for you", "SuggestedItems", "SuggestedItems")</li>
 
-                    @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
-                    {
-                        <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
+                @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
+                {
+					<li class="navbarItem" style="padding-top:12px;"> | </li>
+                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
+
                     "active" : "")">@Html.ActionLink("Manage users", "Index", "Users")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManagePickUpPoints" ?
                     "active" : "")">@Html.ActionLink("Manage pickUpPoints", "Index", "PickUpPoints")</li>

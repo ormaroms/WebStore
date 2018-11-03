@@ -32,18 +32,34 @@
     </script>
 }
 
-<div class="displayRow">
-    @foreach (var item in Model)
-    {
-        <div class="displayCol">
-            <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
-            <p>  @item.Price.ToString("0.00") ₪ | <i class="glyphicon glyphicon-tag"></i> @item.Brand</p>
-            <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
-        </div>
-    }
-</div>
+    <div class="displayRow">
+        @if (Model.Count() != 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="displayCol">
+                    <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+                    <p>  @item.Price.ToString("0.00") ₪ | <i class="glyphicon glyphicon-tag"></i> @item.Brand</p>
+                    <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            if (@Session["UserID"] == null)
+            {
+                <h1>"You need to log in to see recommendations"</h1>
+            }
+            else
+            {
+                <h1>"You didnr order nothing yet so unfortunately we can't recommend you"</h1>
+            }
+        }
+
+
+    </div>
 
 
 

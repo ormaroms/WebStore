@@ -35,7 +35,7 @@ namespace WebStore.Controllers
 
 		public ActionResult Checkout()
 		{
-			return View("Checkout", db.PickUpPoints.ToList());
+			return View("Checkout", db.PickUpPoints.Where(x => !x.IsDeleted).ToList());
 		}
 
 		public ActionResult SaveOrder(int pickupPoint)
@@ -44,10 +44,11 @@ namespace WebStore.Controllers
 			int userId = (int)Session["UserID"];
 
 			List<Item> orderItems = (List<Item>)Session["UserOrder"];
+			Session["UserOrder"] = null;
 
-			// Get Seqaunce
-			int nextSeq = db.Sequences.Select(x => x.OrderID).ToList()[0];
-			db.Sequences.Where(x => true).ToList()[0].OrderID = nextSeq + 1;
+			// Get order sequence
+			int nextSeq = db.Sequences.Select(x => x.OrderSeq).ToList()[0];
+			db.Sequences.Where(x => true).ToList()[0].OrderSeq = nextSeq + 1;
 
 			orderItems.ForEach(item =>
 			{
@@ -72,27 +73,21 @@ namespace WebStore.Controllers
 					newOrderItems.Add(item.ItemID, orderToUpdate);
 				}
 			});
-			
 
-			// Adding the rows to db
-			newOrderItems.Values.ToList().ForEach(orderRow => {
+			newOrderItems.Values.ToList().ForEach(orderRow =>
+			{
 				db.Orders.Add(orderRow);
+				db.SaveChanges();
 			});
 
-			db.SaveChanges();
-
-			return View();
+			return View("Completed");
 		}
 
 		[HttpPost]
 		public ActionResult GetUserName()
 		{
-			//string name = db.Users.First(x => x.UserID == (int)Session["UserID"]).UserName;
-			//string name = db.Users.Where(x => x.UserID == (int)Session["UserID"]).
-			//	Select(x => x.UserName).ToList()[0];
-			//int userId = (int)Session["UserID"];
-			string name =
-				(from usr in db.Users where usr.UserID == 3 select usr.UserName).ToList()[0];
+            int userId = (int)Session["UserID"];
+            string name = db.Users.Where(x => x.UserID == userId).Select(x => x.UserName).ToList()[0];
 			return Json(name);
 		}
 
