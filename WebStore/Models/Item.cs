@@ -16,6 +16,20 @@ namespace WebStore.Models
         public string Gender { get; set; }
         public string ImgPath { get; set; }
         public bool IsDeleted { get; set; }
+
+        public Item()
+        {
+        }
+
+        public Item(int itemTypeId, double price, string color, string brand, string gender, string imgPath)
+        {
+            ItemTypeId = itemTypeId;
+            Price = price;
+            Color = color;
+            Brand = brand;
+            Gender = gender;
+            ImgPath = imgPath;
+        }
     }
 }
 

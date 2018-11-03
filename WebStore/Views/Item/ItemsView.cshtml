@@ -22,17 +22,22 @@
         }
     }
     function addToCart(item, actionName) {
-        $.ajax({
-            type: "POST",
-            url: '/Item/AddItem',
-            data: {
-                item,
-                actionName: actionName
-            },
-            success: function () {
-                window.location.reload();
-            }
-        });
+        if ('@Session["UserID"]' == "" || '@Session["UserID"]' == null) {
+            alert("You have to log in to Order");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: '/Item/AddItem',
+                data: {
+                    item,
+                    actionName: actionName
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+        
     }
     </script>
 }
