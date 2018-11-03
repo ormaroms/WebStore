@@ -86,12 +86,8 @@ namespace WebStore.Controllers
 		[HttpPost]
 		public ActionResult GetUserName()
 		{
-			//string name = db.Users.First(x => x.UserID == (int)Session["UserID"]).UserName;
-			//string name = db.Users.Where(x => x.UserID == (int)Session["UserID"]).
-			//	Select(x => x.UserName).ToList()[0];
-			//int userId = (int)Session["UserID"];
-			string name =
-				(from usr in db.Users where usr.UserID == 3 select usr.UserName).ToList()[0];
+            int userId = (int)Session["UserID"];
+            string name = db.Users.Where(x => x.UserID == userId).Select(x => x.UserName).ToList()[0];
 			return Json(name);
 		}
 
