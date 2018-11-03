@@ -65,6 +65,7 @@
                     "active" : "")">@Html.ActionLink("Woman", "AllWomenItems", "Item")</li>
                 @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
                 {
+					<li class="navbarItem" style="padding-top:12px;"> | </li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
                     "active" : "")">@Html.ActionLink("Manage users", "Index", "Users")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManagePickUpPoints" ?

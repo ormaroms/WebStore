@@ -49,8 +49,6 @@
                 <li>@Html.ActionLink("All", "AllWomenItems", "Item")</li>
                 <li>@Html.ActionLink("Shoes", "GetWomenShoes", "Item")</li>
                 <li>@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>
-                @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
-                    "active" : "")">@Html.ActionLink("Pants", "GetWomenPants", "Item")</li>*@
                 <li>@Html.ActionLink("Shirts", "GetWomenShirts", "Item")</li>
             }
             else
@@ -58,9 +56,6 @@
                 <li>@Html.ActionLink("All", "AllMenItems", "Item")</li>
                 <li>@Html.ActionLink("Shoes", "GetMenShoes", "Item")</li>
                 <li>@Html.ActionLink("Pants", "GetMenPants", "Item")</li>
-                @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pants" ?
-                    "active" : "")">@Html.ActionLink("Pants", "GetMenPants", "Item")</li>*@
-                @* ליצור לזה מה שצריךךךך אין לנו כוח *@
                 <li>@Html.ActionLink("Shirts", "GetMenShirts", "Item")</li>
             }
         </ul>
@@ -85,7 +80,7 @@
 			</div>
 		</div>
 
-		<input class="col-md-3" type="submit" style="width: 100px;" value="Filter" />
+		<input class="col-md-3 btn btn-ligh" type="submit" style="width: 100px;" value="Filter" />
 	}
 </section>
 

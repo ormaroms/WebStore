@@ -36,6 +36,10 @@ body, div, h1, h2, h3, h4 {
 	font-weight: bold;
 }
 
+body {
+	overflow-x:hidden;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -155,12 +159,17 @@ textarea {
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 0.3px;
+}
 
+.homePic {
+	height: 60%;
+	width: 60%;
+	margin-bottom: 20px;
 }
 
 .itemTypeDiv {
-    margin-top: 7px;
-    margin-bottom: 7px;
+	margin-top: 7px;
+	margin-bottom: 7px
 }
 
 .createItemInput {
