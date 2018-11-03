@@ -8,7 +8,8 @@
             var color = $("#colorInput").val();
             var gender = $("[name='gender']:checked").val()
             var image = $('#fileInput');
-            if (!price || !type || !color || !gender || (image.prop('files').length == 0 && item.ItemID)) {
+            if (!price || !type || !color || !gender ||
+                (image.prop('files').length == 0 &&  (@Html.Raw(Json.Encode(Model)))[0].ItemID == 0)) {
                 alert("You must fill all the fields!");
                 return false;
             }
