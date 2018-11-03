@@ -209,6 +209,7 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PickUpPointsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UserSuggestionsController.cs" />
     <Compile Include="Data\Items.cs">
       <DependentUpon>WebStoreEF.tt</DependentUpon>
     </Compile>
@@ -365,8 +366,11 @@
     <Content Include="Views\PickUpPoints\Manage.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Orders\Manage.cshtml" />
+    <Content Include="Views\UserSuggestions.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\UserSuggestions\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

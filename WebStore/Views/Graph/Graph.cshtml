@@ -8,11 +8,21 @@
 
 
 <style>
+    #dashboard {
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+    .subTitle {
+        font-size: x-large;
+        text-anchor: middle;
+    }
     body {
-        width: 1060px;
+        width: 100%;
         margin: 50px auto;
     }
-
+    h1{
+        text-align: center;
+    }
     path {
         stroke: #fff;
     }
@@ -65,8 +75,12 @@
         width: 50px;
     }
 </style>
-
+<h1>Display items sold by brand and product type</h1>
 <div id='dashboard'>
+    @*<div>
+
+    </div>*@
+    
 </div>
 
 @section Scripts {
@@ -98,6 +112,9 @@
                 var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
                     .domain(fD.map(function (d) { return d[0]; }));
 
+                hGsvg.append('text').attr("class", "subTitle").attr("x", hGDim.w / 2).attr("y", - 20).text("brand:");
+
+                
                 // Add x-axis to the histogram svg.
                 hGsvg.append("g").attr("class", "x axis")
                     .attr("transform", "translate(0," + hGDim.h + ")")
@@ -110,6 +127,7 @@
                 // Create bars for histogram to contain rectangles and clothes labels.
                 var bars = hGsvg.selectAll(".bar").data(fD).enter()
                     .append("g").attr("class", "bar");
+               
 
                 //create the rectangles.
                 bars.append("rect")
@@ -175,6 +193,7 @@
                     .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
                     .attr("transform", "translate(" + pieDim.w / 2 + "," + pieDim.h / 2 + ")");
 
+               // piesvg.append('text').attr("class", "subTitle").attr("x", pieDim.w / 4).attr("y", - 120).text("product type:");
                 // create function to draw the arcs of the pie slices.
                 var arc = d3.svg.arc().outerRadius(pieDim.r - 10).innerRadius(0);
 
