@@ -21,6 +21,23 @@ namespace WebStore.Controllers
         {
             return View("SuggestedItems");
         }
+
+        [HttpPost]
+        public ActionResult AddItem(Item item, string actionName)
+        {
+            if (Session["UserOrder"] != null)
+            {
+                List<Item> myOrders = (List<Item>)Session["UserOrder"];
+                myOrders.Add(item);
+                Session["UserOrder"] = myOrders;
+            }
+            else
+            {
+                Session["UserOrder"] = new List<Item> { item };
+            }
+            return RedirectToAction(actionName);
+        }
+
         public ActionResult SuggestedItems()
         {
             var userId = HttpContext.Session["UserID"];

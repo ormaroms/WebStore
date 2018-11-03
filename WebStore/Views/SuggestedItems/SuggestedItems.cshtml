@@ -17,7 +17,7 @@
         } else {
             $.ajax({
                 type: "POST",
-                url: '/Item/AddItem',
+                url: '/SuggestedItems/AddItem',
                 data: {
                     item,
                     actionName: actionName
@@ -50,11 +50,11 @@
         {
             if (@Session["UserID"] == null)
             {
-                <h1>"You need to log in to see recommendations"</h1>
+                <h1>You need to log in to see recommendations</h1>
             }
             else
             {
-                <h1>"You didnr order nothing yet so unfortunately we can't recommend you"</h1>
+                <h1>You didnr order nothing yet so unfortunately we can't recommend you</h1>
             }
         }
 
