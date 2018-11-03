@@ -40,11 +40,6 @@ namespace WebStore.Controllers
         public ActionResult AllMenItems(string brand, int? minPrice, int? maxPrice)
 		{
 			return View("ItemsView", FilterData("Men", null, brand, minPrice, maxPrice));
-
-			//               var allItems = db.Items.Where(x => x.Gender == "Men");
-			////               GroupBy(x => x.ItemID).Select(x => x.FirstOrDefault());
-
-			//               return View("ItemsView",allItems.ToList()); 
 		}
 
 		public ActionResult AllWomenItems(string brand, int? minPrice, int? maxPrice)
