@@ -5,6 +5,7 @@
 @section Scripts {
 	<script type="text/javascript">
 		$(document).ready(function () {
+			debugger;
 			getUserName();
 			getTotalOrderPrice();
 		});
@@ -29,10 +30,15 @@
 			});
 		}
 
-		function checkForm() {
-			debugger;
-			return false;
-		}
+		$('form').submit(function () {
+			if (!$('#pickupPoint').val()) {
+				alert('Choose a pickup point to continue');
+				return false;
+			}
+
+			return true;
+		});
+
 
 	</script>
 }
