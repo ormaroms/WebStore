@@ -357,6 +357,7 @@
     <Content Include="Views\Orders\Manage.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\Completed.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

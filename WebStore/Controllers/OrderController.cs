@@ -35,7 +35,7 @@ namespace WebStore.Controllers
 
 		public ActionResult Checkout()
 		{
-			return View("Checkout", db.PickUpPoints.ToList());
+			return View("Checkout", db.PickUpPoints.Where(x => !x.IsDeleted).ToList());
 		}
 
 		public ActionResult SaveOrder(int pickupPoint)
@@ -80,7 +80,7 @@ namespace WebStore.Controllers
 				db.SaveChanges();
 			});
 
-			return View();
+			return View("Completed");
 		}
 
 		[HttpPost]
