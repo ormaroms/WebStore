@@ -34,10 +34,10 @@
                 $("#fileInput").prop("disabled", true);
                 $("#saveItem").html("Update");
 
-                if (item.gender == 'Men') {
-                    $("#manValue").prop("checked", true);
-                } else {
+                if (item.Gender.includes("Women")) {      
                     $("#womanValue").prop("checked", true);
+                } else {
+                    $("#manValue").prop("checked", true);
                 }
             }
         });
@@ -73,17 +73,17 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <input class="createItemInput" name="price" type="number" step="0.01" min="1" placeholder="Enter item's' price" id="priceInput" />
+                <input class="createItemInput" name="price" type="number" step="0.01" min="1" placeholder="Enter item's price" id="priceInput" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <input class="createItemInput" name="color" type="text" placeholder="Enter item's' color" id="colorInput" />
+                <input class="createItemInput" name="color" type="text" placeholder="Enter item's color" id="colorInput" />
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <input class="createItemInput" name="brand" type="text" placeholder="Enter item's' brand" id="brandInput" />
+                <input class="createItemInput" name="brand" type="text" placeholder="Enter item's brand" id="brandInput" />
             </div>
         </div>
         <div class="row">

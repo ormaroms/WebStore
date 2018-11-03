@@ -41,26 +41,35 @@ namespace WebStore.Controllers
         public ActionResult SuggestedItems()
         {
             var userId = HttpContext.Session["UserID"];
-           
+
 
             if (userId != null)
             {
                 int id = (int)userId;
                 var orders = db.Orders.Where(x => x.UserID == id).Select(x => x.ID).ToList();
 
-                if(orders.Count !=0 )
+                if (orders.Count != 0)
                 {
-                    var trainData = db.Orders.Join(db.Items,
-                                o => o.ItemID,
-                                i => i.ItemID,
-                                (o, i) => new
-                                {
-                                    UserID = o.UserID,
-                                    Gender = i.Gender,
-                                    Brand = i.Brand,
-                                    ItemTypeId = i.ItemTypeId
-                                }).OrderBy(x => x.UserID).ToList();
+                    var joinDB = db.Orders.Join(db.Items,
+                    o => o.ItemID,
+                    i => i.ItemID,
+                    (o, i) => new
+                    {
+                        isdeleted = i.IsDeleted,
+                        UserID = o.UserID,
+                        Gender = i.Gender,
+                        Brand = i.Brand,
+                        ItemTypeId = i.ItemTypeId
+                    }).Where(x => x.isdeleted == false).ToList();
 
+                    var trainData = joinDB.Select(X =>
+                     new
+                     {
+                         UserID = X.UserID,
+                         Gender = X.Gender,
+                         Brand = X.Brand,
+                         ItemTypeId = X.ItemTypeId
+                     }).OrderBy(x => x.UserID).ToList();
 
                     DataTable table = new DataTable("");
                     table.Columns.Add("ItemTypeId", typeof(int));
@@ -87,15 +96,15 @@ namespace WebStore.Controllers
                     var clusters = kmeans.Learn(matrix);
                     int[] labels = clusters.Decide(matrix);
 
-                    var purchasesById = db.Orders.Join(db.Items,
-                    o => o.ItemID,
-                    i => i.ItemID,
-                    (o, i) => new
+
+
+                    var purchasesById = joinDB.Select(X =>
+                    new
                     {
-                        UserID = o.UserID,
-                        Gender = i.Gender,
-                        Brand = i.Brand,
-                        ItemTypeId = i.ItemTypeId
+                        UserID = X.UserID,
+                        Gender = X.Gender,
+                        Brand = X.Brand,
+                        ItemTypeId = X.ItemTypeId
                     }).GroupBy(x => x.UserID).ToList();
 
                     IList<Tuple<int, int[]>> labelsForUsers = new List<Tuple<int, int[]>>();
@@ -131,6 +140,7 @@ namespace WebStore.Controllers
 
                     var productsToPredict = db.Items
                         .Where(x => !itemIdsUserBought.Contains(x.ItemID))
+                        .Where(x => x.IsDeleted == false)
                         .Select(x => new
                         {
                             id = x.ItemID,

@@ -147,7 +147,7 @@ textarea {
     transition: 0.3s;
 }
 .editButton:hover {
-    background-color: dimgrey;
+    background-color: lightsalmon;
     color: white;
 }
 
