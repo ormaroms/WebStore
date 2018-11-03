@@ -24,7 +24,8 @@ namespace WebStore.Controllers
 
             if (itemID != null)
             {
-                myOrders.RemoveAll(r => r.ItemID == itemID);
+                var itemToRemove = myOrders.FirstOrDefault(r => r.ItemID == itemID);
+                myOrders.Remove(itemToRemove);
             }
 
             Session["UserOrder"] = myOrders;
