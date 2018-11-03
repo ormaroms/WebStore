@@ -211,21 +211,6 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PickUpPointsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Data\Items.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ItemTypes.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Orders.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PickUpPoints.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Users.cs">
-      <DependentUpon>WebStoreEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\WebStoreEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

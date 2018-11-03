@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b4e05677fcca404a8662718bebe953a1" Name="Diagram1">
-        <EntityTypeShape EntityType="WebStoreDBModel.Orders" Width="1.5" PointX="3.25" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.PickUpPoints" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Users" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__PickUpPo__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__UserID__440B1D61" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Items" Width="1.5" PointX="0.5" PointY="0.625" />
-        <EntityTypeShape EntityType="WebStoreDBModel.ItemTypes" Width="1.5" PointX="2.25" PointY="3.25" IsExpanded="true" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__6E01572D" />
-        <AssociationConnector Association="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" />
-        <EntityTypeShape EntityType="WebStoreDBModel.Sequence" Width="1.5" PointX="4.375" PointY="4.75" />
+      <Diagram DiagramId="7cb417cf3c0a4be3ad3ec1dd4de019c5" Name="Diagram1">
+        <EntityTypeShape EntityType="WebStoreDBModel.Items" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.ItemTypes" Width="1.5" PointX="2.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.PickUpPoints" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Users" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Items__ItemTypeI__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Orders__PickUpPo__6E8B6712" ManuallyRouted="false" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Orders__UserID__6D9742D9" ManuallyRouted="false" />
+        <AssociationConnector Association="WebStoreDBModel.FK__Orders__ItemID__7908F585" />
+        <EntityTypeShape EntityType="WebStoreDBModel.Sequences" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -11,13 +11,10 @@ namespace WebStore.Models
 {
     public class Order
     {
-
-		[Key, System.ComponentModel.DataAnnotations.Schema.Column(Order = 0)]
-		[System.Data.Linq.Mapping.Column(Storage = "OrderID", AutoSync = AutoSync.OnInsert,
-		IsPrimaryKey = true, IsDbGenerated = true)]
+		[Key]
+		public int ID { get; set; }
 		public int OrderID { get; set; }
         public int UserID { get; set; }
-        [Key, System.ComponentModel.DataAnnotations.Schema.Column(Order = 1)]
         public int ItemID { get; set; }
         public int PickUpPointID { get; set; }
         [DataType(DataType.Date)]

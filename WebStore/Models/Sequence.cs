@@ -9,6 +9,7 @@ namespace WebStore.Models
 	public class Sequence
 	{
 		[Key]
-		public int OrderID { get; set; }
+		public int ID { get; set; }
+		public int OrderSeq { get; set; }
 	}
 }
