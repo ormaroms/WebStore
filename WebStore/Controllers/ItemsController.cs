@@ -12,13 +12,14 @@ namespace WebStore.Controllers
     {
         private WebStoreContext db = new WebStoreContext();
 
-        public ActionResult Index()
+        public ActionResult Index(Item item)
         {
-            return View("Create");
+            return View("Create", new List<Item>() {item });
         }
 
         [HttpPost]
-        public ActionResult Create(int type, double price, string color, string brand, string gender, HttpPostedFileBase image)
+        public ActionResult Create(int type, double price, string color, string brand, string gender, 
+            bool isUpdate, int itemID, HttpPostedFileBase image)
         {
             string path = Path.Combine(Server.MapPath("~/Images"),
                             Path.GetFileName(image.FileName));
@@ -28,6 +29,8 @@ namespace WebStore.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+
 
 
     }

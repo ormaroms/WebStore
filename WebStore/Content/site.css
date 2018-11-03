@@ -142,19 +142,18 @@ textarea {
     letter-spacing: 0.3px;
 }
 
-.addButton {
+.btnStyle {
     border-radius: 5px;
     transition: 0.3s;
+}
+.editButton:hover {
+    background-color: dimgrey;
+    color: white;
 }
 
 .addButton:hover {
     background-color: dodgerblue;
     color: white;
-}
-
-.delButton {
-    border-radius: 5px;
-    transition: 0.3s;
 }
 
 .delButton:hover {

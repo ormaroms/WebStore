@@ -1,4 +1,6 @@
-﻿@section Scripts {
+﻿@model IEnumerable<WebStore.Models.Item>
+
+@section Scripts {
     <script type="text/javascript">
         function validate(orderId, itemId) {
             var price = $("#priceInput").val();
@@ -6,7 +8,7 @@
             var color = $("#colorInput").val();
             var gender = $("[name='gender']:checked").val()
             var image = $('#fileInput');
-            if (!price || !type || !color || !gender || image.prop('files').length == 0) {
+            if (!price || !type || !color || !gender || (image.prop('files').length == 0 && item.ItemID)) {
                 alert("You must fill all the fields!");
                 return false;
             }
@@ -15,6 +17,30 @@
             }
             else return false;
         }
+
+        $(document).ready(function () {
+
+            var model = @Html.Raw(Json.Encode(Model));
+            var item = model[0];
+
+            if (item.ItemID != 0) {
+                $("#typeInput").val(item.ItemTypeId);
+                $("#priceInput").val(item.Price);
+                $("#colorInput").val(item.Color);
+                $("#brandInput").val(item.Brand);
+                $("#isUpdate").val(true);
+                $("#itemID").val(item.ItemID);
+                $("#fileInput").prop("disabled", true);
+                $("#saveItem").html("Update");
+
+                if (item.gender == 'Men') {
+                    $("#manValue").prop("checked", true);
+                } else {
+                    $("#womanValue").prop("checked", true);
+                }
+            }
+        });
+
 
     </script>
 }
@@ -28,7 +54,10 @@
                 <span class="createItemText">Create new Item</span>
             </div>
         </div>
-        <div class=".row">
+        <input type="hidden" id="itemID" name="itemID">
+        <input type="hidden" id="isUpdate" name="isUpdate" value="false">
+
+        <div class="row">
             <div class="col-md-12">
                 <div class="itemTypeDiv">
                     Type
@@ -60,8 +89,8 @@
             <div class="col-md-12">
                 <div>
                     Gender
-                    <input type="radio" name="gender" value="Men" /> Male
-                    <input type="radio" name="gender" value="Women" /> Female
+                    <input id="manValue" type="radio" name="gender" value="Men" /> Male
+                    <input id="womanValue" type="radio" name="gender" value="Women" /> Female
                 </div>
 
             </div>
@@ -76,7 +105,7 @@
         </div>
         <div class="row">
             <div class="col-md-5">
-                <button type="submit" class="btn btn-success">Create</button>
+                <button id="saveItem" type="submit" class="btn btn-success">Create</button>
             </div>
         </div>
     </div>
