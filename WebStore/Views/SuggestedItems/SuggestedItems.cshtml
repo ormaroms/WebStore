@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebStore.Models.Item>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        //var Model;
+    @*$.getJSON('@Url.Action("SuggestedItems", "SuggestedItems")')
+        .success(function (items) {
+            Model = items
+        });*@
+
+    function addToCart(item, actionName) {
+        if ('@Session["UserID"]' == "" || '@Session["UserID"]' == null) {
+            alert("You have to log in to Order");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: '/Item/AddItem',
+                data: {
+                    item,
+                    actionName: actionName
+                },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        }
+
+    }
+    </script>
+}
+
+<div class="displayRow">
+    @foreach (var item in Model)
+    {
+        <div class="displayCol">
+            <img src="@Url.Content(item.ImgPath)" alt="Image" class="displayImg" />
+            <p>  @item.Price.ToString("0.00") ₪ | <i class="glyphicon glyphicon-tag"></i> @item.Brand</p>
+            <button class="btn btn-light addButton" onclick='addToCart(@Html.Raw(Json.Encode(item)), "@HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()")'>
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+        </div>
+    }
+</div>
+
+
+

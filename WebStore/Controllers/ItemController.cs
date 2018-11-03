@@ -27,7 +27,17 @@ namespace WebStore.Controllers
             return RedirectToAction(actionName);
         }
 
-		public ActionResult AllMenItems(string brand, int? minPrice, int? maxPrice)
+        [HttpPost]
+        public ActionResult DelItem(Item item, string actionName)
+        {
+            var itemToDelete = db.Items.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
+            itemToDelete.IsDeleted = true;
+            db.SaveChanges();
+
+            return RedirectToAction(actionName);
+        }
+
+        public ActionResult AllMenItems(string brand, int? minPrice, int? maxPrice)
 		{
 			return View("ItemsView", FilterData("Men", null, brand, minPrice, maxPrice));
 
@@ -94,8 +104,8 @@ namespace WebStore.Controllers
 
 	private List<Item> FilterData(string gender, int? itemType, string brand, int? minPrice, int? maxPrice)
 	{
-		var allItems = db.Items.Where(x => true);
-		if (gender != null)
+        var allItems = db.Items.Where(x => true && !x.IsDeleted);
+        if (gender != null)
 		{
 			allItems = allItems.Where(x => x.Gender == gender);
 		}

@@ -1,0 +1,88 @@
+﻿@section Scripts {
+    <script type="text/javascript">
+        function validate(orderId, itemId) {
+            var price = $("#priceInput").val();
+            var type = $("#typeInput").val();
+            var color = $("#colorInput").val();
+            var gender = $("[name='gender']:checked").val()
+            var image = $('#fileInput');
+            if (!price || !type || !color || !gender || image.prop('files').length == 0) {
+                alert("You must fill all the fields!");
+                return false;
+            }
+            else if (image.prop('files')[0]['type'].split('/')[0] === 'image') {
+                return true;
+            }
+            else return false;
+        }
+
+    </script>
+}
+
+
+@using (Html.BeginForm("Create", "Items",FormMethod.Post,new { enctype = "multipart/form-data", onsubmit="return validate()" }))
+{
+    <div class="createItemContainer">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="createItemText">Create new Item</span>
+            </div>
+        </div>
+        <div class=".row">
+            <div class="col-md-12">
+                <div class="itemTypeDiv">
+                    Type
+                    <select id="typeInput" name="type">
+                        <option value="1">Pants</option>
+                        <option value="2">Shoes</option>
+                        <option value="3">Shirt</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input class="createItemInput" name="price" type="number" placeholder="Enter item's' price" id="priceInput" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input class="createItemInput" name="color" type="text" placeholder="Enter item's' color" id="colorInput" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input class="createItemInput" name="brand" type="text" placeholder="Enter item's' brand" id="brandInput" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    Gender
+                    <input type="radio" name="gender" value="Men" /> Male
+                    <input type="radio" name="gender" value="Women" /> Female
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="createItemImgDiv">
+
+                </div>
+                Image<input type="file" name="image" id="fileInput" class="createItemInput" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-success">Create</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+

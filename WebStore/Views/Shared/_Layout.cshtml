@@ -33,7 +33,6 @@
                 <a href='@Url.Action("Index", "Order")'>
                     <i class="glyphicon glyphicon-shopping-cart icon"></i>
                 </a>
-
                 @if (Request.IsAuthenticated)
                 {
                     <a href='@Url.Action("Logout", "Login")'>
@@ -57,20 +56,26 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
             <ul class="nav navbar-nav">
-                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "AllItems" ?
+                <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "AllItems" ?
                     "active" : "")">@Html.ActionLink("All", "AllItems", "Item")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "AllMenItems" ?
                     "active" : "")">@Html.ActionLink("Man", "AllMenItems", "Item")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "AllWomenItems" ?
                     "active" : "")">@Html.ActionLink("Woman", "AllWomenItems", "Item")</li>
-                @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
-                {
-                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
+
+                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "SuggestedItems" ?
+                    "active" : "")">@Html.ActionLink("Recommended for you", "SuggestedItems", "SuggestedItems")</li>
+
+                    @if (Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value == "admin")
+                    {
+                        <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageUsers" ?
                     "active" : "")">@Html.ActionLink("Manage users", "Index", "Users")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManagePickUpPoints" ?
                     "active" : "")">@Html.ActionLink("Manage pickUpPoints", "Index", "PickUpPoints")</li>
                     <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "ManageOrders" ?
                     "active" : "")">@Html.ActionLink("Manage orders", "Index", "Orders")</li>
+                    <li class="navbarItem @(ViewContext.RouteData.Values["Action"].ToString() == "CreateItem" ?
+                    "active" : "")">@Html.ActionLink("Create item", "Index", "items")</li>
                 }
 
                 </ul>

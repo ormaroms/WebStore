@@ -1,8 +1,5 @@
 ﻿
 @{
-    ViewBag.Title = "Graph";
-}
-@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +7,7 @@
 <style>
     #dashboard {
         margin-left: 5%;
-        margin-top: 10%;
+        margin-top: 7%;
     }
     .subTitle {
         font-size: x-large;
@@ -111,9 +108,6 @@
                 // create function for x-axis mapping.
                 var x = d3.scale.ordinal().rangeRoundBands([0, hGDim.w], 0.1)
                     .domain(fD.map(function (d) { return d[0]; }));
-
-                hGsvg.append('text').attr("class", "subTitle").attr("x", hGDim.w / 2).attr("y", - 20).text("brand:");
-
                 
                 // Add x-axis to the histogram svg.
                 hGsvg.append("g").attr("class", "x axis")
@@ -302,8 +296,12 @@
                             var currentBrand = groups[i][0].Brand;
                             cuttentData = { Brand: currentBrand, clothes: { Shoes: 0, Shirt: 0, Pants: 0 } };
                             var currentGroups = groups.filter(x => x[0].Brand === currentBrand);
-                            currentGroups.forEach(function (group) {
-                                cuttentData.clothes[group[0].ItemTypeName] = group.length;
+                        currentGroups.forEach(function (group) {
+                            var sum = 0;
+                            group.forEach(function (item) {
+                                sum += item.Quantity;
+                            });
+                            cuttentData.clothes[group[0].ItemTypeName] = sum;
                                 groups.splice(groups.indexOf(group), 1);
                             });
                             clothesData[clothesData.length] = cuttentData;

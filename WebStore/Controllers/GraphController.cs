@@ -26,6 +26,7 @@ namespace WebStore.Controllers
         i => i.ItemID,
         (o, i) => new
         {
+            Quantity = o.Quantity,
             Brand = i.Brand,
             ItemTypeId = i.ItemTypeId
         }).Join(db.ItemType,
@@ -33,6 +34,7 @@ namespace WebStore.Controllers
                     i => i.ItemTypeId,
                     (r, i) => new
                     {
+                        Quantity = r.Quantity,
                         Brand = r.Brand,
                         ItemTypeName = i.name,
                         ItemTypeId = i.ItemTypeId
