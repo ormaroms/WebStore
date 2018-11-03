@@ -40,7 +40,8 @@ namespace WebStore.Controllers
 		public ActionResult SaveOrder(int pickupPoint)
 		{
 			Dictionary<int, Order> newOrderItems = new Dictionary<int, Order>();
-			int userId = (int)Session["UserID"];
+			//int userId = (int)Session["UserID"];
+			int userId = 3;
 
 			List<Item> orderItems = (List<Item>)Session["UserOrder"];
 
@@ -71,14 +72,49 @@ namespace WebStore.Controllers
 					newOrderItems.Add(item.ItemID, orderToUpdate);
 				}
 			});
-			
+
+			Order newOrderRow2 = new Order();
+			newOrderRow2.OrderID = 2;
+			newOrderRow2.PickUpPointID = 1;
+			newOrderRow2.UserID = 3;
+			newOrderRow2.OrderDate = DateTime.Now;
+			newOrderRow2.ItemID = 12;
+			newOrderRow2.Quantity = 2;
+
+			db.Orders.Add(newOrderRow2);
+			db.SaveChanges();
+
 
 			// Adding the rows to db
-			newOrderItems.Values.ToList().ForEach(orderRow => {
-				db.Orders.Add(orderRow);
+			//db.Orders.Add(newOrderItems.Values.ToList()[0]);
+			//db.SaveChanges();
+
+			newOrderItems.Values.ToList().ForEach(orderRow =>
+			{
+				//Order orderToInsert = new Order()
+				//{
+				//	OrderID = orderRow.OrderID,
+				//	UserID = orderRow.UserID,
+				//	OrderDate = DateTime.Now,
+				//	ItemID = orderRow.ItemID,
+				//	Quantity = orderRow.Quantity,
+				//	PickUpPointID = orderRow.PickUpPointID
+				//};
+
+				Order orderToInsert = new Order()
+				{
+					OrderID = 5,
+					UserID = 4,
+					OrderDate = DateTime.Now,
+					ItemID = 3,
+					Quantity = 2,
+					PickUpPointID = 2
+				};
+
+				db.Orders.Add(orderToInsert);
+				db.SaveChanges();
 			});
 
-			db.SaveChanges();
 
 			return View();
 		}
