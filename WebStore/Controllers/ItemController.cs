@@ -14,16 +14,22 @@ namespace WebStore.Controllers
         [HttpPost]
         public ActionResult AddItem(Item item, string actionName)
         {
-            if (Session["UserOrder"] != null)
-            {
-                List<Item> myOrders = (List<Item>)Session["UserOrder"];
-                myOrders.Add(item);
-                Session["UserOrder"] = myOrders;
+            bool isDeleted = db.Items.First(x => x.ItemID == item.ItemID).IsDeleted;
+
+            if (!isDeleted) {
+
+                if (Session["UserOrder"] != null)
+                {
+                    List<Item> myOrders = (List<Item>)Session["UserOrder"];
+                    myOrders.Add(item);
+                    Session["UserOrder"] = myOrders;
+                }
+                else
+                {
+                    Session["UserOrder"] = new List<Item> { item };
+                }
             }
-            else
-            {
-                Session["UserOrder"] = new List<Item> { item };
-            }
+
             return RedirectToAction(actionName);
         }
 

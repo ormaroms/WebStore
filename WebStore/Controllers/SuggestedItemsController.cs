@@ -87,10 +87,7 @@ namespace WebStore.Controllers
                     // The resulting table can be transformed to jagged array:
                     double[][] matrix = Matrix.ToJagged(result);
 
-                    KMedoids kmeans = new KMedoids(k: 2)
-                    {
-
-                    };
+                    KMedoids kmeans = new KMedoids(k: 6) {};
 
 
                     var clusters = kmeans.Learn(matrix);

@@ -10,9 +10,10 @@
         if (r == true) {
             $.ajax({
                 type: "POST",
-                url: '/Item/Create',
+                url: '/Item/DelItem',
                 data: {
-                    item
+                    item,
+                    actionName
                 },
                 success: function () {
                     window.location.reload();

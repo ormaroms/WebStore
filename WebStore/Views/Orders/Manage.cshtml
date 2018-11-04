@@ -3,13 +3,12 @@
 
 @section Scripts {
     <script type="text/javascript">
-        function deleteBtnClicked(orderId, itemId) {
+        function deleteBtnClicked(orderID) {
             $.ajax({
                 type: "POST",
                 url: '/Orders/Delete',
                 data: {
-                    orderId: orderId,
-                    itemId: itemId
+                    orderID
                 },
                 success: function () {
                     window.location.reload();
@@ -57,7 +56,7 @@
                 <input type="text" value="@(order.OrderDate)" disabled/>
             </td>
             <td>
-                <button class="btn btn-danger" onclick="deleteBtnClicked(@order.OrderID, @(order.ItemID))">Delete</button>
+                <button class="btn btn-danger" onclick="deleteBtnClicked(@order.ID)">Delete</button>
             </td>
         </tr>
 

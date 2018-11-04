@@ -17,9 +17,9 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(string orderId, string itemId)
+        public ActionResult Delete(string orderID)
         {
-            Order order = db.Orders.Find(int.Parse(orderId), int.Parse(itemId));
+            Order order = db.Orders.Find(int.Parse(orderID));
             order.IsDeleted = true;
             db.SaveChanges();
             return Json(new { Success = true });

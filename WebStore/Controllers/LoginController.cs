@@ -53,6 +53,8 @@ namespace WebStore.Controllers
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();
+            Session["UserID"] = null;
+            Session["UserOrder"] = null;
             return RedirectToAction("Index", "Home");
         }
 
